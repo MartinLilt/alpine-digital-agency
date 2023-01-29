@@ -2,8 +2,6 @@ import "../styles/globals.css";
 import "tailwindcss/tailwind.css";
 import "normalize.css";
 import localFont from "@next/font/local";
-import { AnimatePresence } from "framer-motion";
-
 import dynamic from "next/dynamic";
 
 const myFont = localFont({
@@ -16,7 +14,7 @@ const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
 
 const App = ({ Component, pageProps }) => {
   return (
-    <AnimatePresence>
+    <>
       <div className={myFont.className}>
         <Component {...pageProps} />
         <AnimatedCursor
@@ -47,7 +45,7 @@ const App = ({ Component, pageProps }) => {
           ]}
         />
       </div>
-    </AnimatePresence>
+    </>
   );
 };
 export default App;

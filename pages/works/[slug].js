@@ -33,7 +33,12 @@ const WorkCase = ({ card }) => {
             )}
             {link && (
               <StyledCategory>
-                <a href={link} target="_blank" className="hover">
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover"
+                >
                   {link}
                 </a>
               </StyledCategory>

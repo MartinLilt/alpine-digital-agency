@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
 import Modal from "../modal";
 import s from "./header.module.css";
 import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { useScroll, motion, useSpring } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useRef, useEffect, useState } from "react";
+gsap.registerPlugin(ScrollTrigger);
 
 const Header = ({
   isAbout = false,
@@ -14,15 +16,15 @@ const Header = ({
   let [modalState, setModalState] = useState(false);
   const router = useRouter();
   const url = router.asPath;
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 10,
-    restDelta: 0.001,
-  });
-
+  const ref = useRef(null);
   const isOpen = modalState || isAbout || isWorks ? "#d12245" : "#fff";
   const isPageActive = isAbout || isWorks || isWorksCategory ? url : "/";
+  const isModalOpenOnWorksCategory = isWorksCategory && !modalState;
+
+  useEffect(() => {
+    const el = ref.current;
+    gsap.to(el, {});
+  }, []);
 
   useEffect(() => {
     modalState
@@ -35,13 +37,13 @@ const Header = ({
   };
 
   return (
-    <motion.div style={{ scaleX }}>
+    <div>
       <header className={s.header}>
         <div className={s.container}>
           <div className={s.flex}>
             <button type="button" onClick={modalState ? toggleModal : null}>
               <Link href={isWorksCategory ? "/works" : "/"} className={s.logo}>
-                {isWorksCategory ? (
+                {isModalOpenOnWorksCategory ? (
                   <svg
                     width="40"
                     height="40"
@@ -68,11 +70,9 @@ const Header = ({
                   </svg>
                 )}
                 {!isWorks ? (
-                  <motion.div>
-                    <StyledText className={s.text} color={isOpen}>
-                      ALPINE
-                    </StyledText>
-                  </motion.div>
+                  <StyledText className={s.text} color={isOpen} ref={ref}>
+                    ALPINE
+                  </StyledText>
                 ) : null}
               </Link>
             </button>
@@ -108,7 +108,7 @@ const Header = ({
         </div>
       </header>
       {modalState ? <Modal toggleModal={toggleModal} /> : null}
-    </motion.div>
+    </div>
   );
 };
 

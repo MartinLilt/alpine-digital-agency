@@ -26,15 +26,3 @@ export async function getStaticProps() {
     revalidate: 10,
   };
 }
-
-// export const getStaticProps = async () => {
-//   const response = await fetch("http://localhost:3000/api/cards");
-//   const cards = await response.json();
-
-//   return {
-//     props: {
-//       cards,
-//     },
-//     revalidate: 10,
-//   };
-// };
