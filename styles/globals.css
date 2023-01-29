@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  img[loading="lazy"] {
+    clip-path: inset(0.6px);
+  }
+}
+
+:root {
+  --main-color: #fff;
+  --accent-color: #d12245;
+
+  --bg-main-color: #222;
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body {
+  position: relative;
+  background-color: #222;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  padding: 0 2rem;
+  margin: 0 auto;
+  width: 100%;
+  height: inherit;
+}
+
+@media only screen and (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 4rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+    padding: 0 7rem;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media only screen and (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
+.modal-image {
+  background-image: url(../src/assets/images/menu_bg.jpg);
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.hover {
+  position: relative;
+  padding-bottom: 0.2em;
+  transition: opacity 0.3s;
+  height: fit-content;
+}
+
+.hover:before,
+.hover:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  height: 0.25rem;
+  width: 0;
+  background: #d12245;
+}
+.hover:before {
+  left: 0;
+  transition: width 0s ease, background 0.3s ease;
+}
+.hover:after {
+  right: 0;
+  transition: width 0.3s ease;
+}
+.hover:hover:before {
+  width: 100%;
+  background: #d12245;
+  transition: width 0.3s ease;
+}
+.hover:hover:after {
+  width: 100%;
+  background: transparent;
+  transition: all 0s ease;
+}

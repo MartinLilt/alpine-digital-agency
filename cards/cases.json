@@ -1,0 +1,558 @@
+[
+  {
+    "id": 7,
+    "title": "Bone Daddies",
+    "tag": "bone-daddies",
+    "category": "web",
+    "client": "Bone Daddies",
+    "agency": "",
+    "desc": "Full digital transformation for London ramen royalty Bone Daddies. Brief included website with content management, ecommerce, video & brand evolution.",
+    "link": "https://www.bonedaddies.com/",
+
+    "img": "/img/banner.jpg",
+    "imgs": [
+      { "img": "/img/1-9.jpg", "desc": "" },
+      { "img": "/img/2-8.jpg", "desc": "" },
+      { "img": "/img/3-7.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Brandtix",
+    "tag": "brandtix",
+    "category": "UI",
+    "client": "",
+    "agency": "",
+    "desc": "UI Design for sports index platform Brandtix.",
+    "link": "",
+
+    "img": "/img/bg-bottom-1920x1000.jpg",
+    "imgs": [
+      { "img": "/img/1-4.png", "desc": "" },
+      { "img": "/img/3.png", "desc": "" },
+      { "img": "/img/4-2.png", "desc": "" }
+    ]
+  },
+  {
+    "id": 23,
+    "title": "Cosentyx",
+    "tag": "cosentyx",
+    "category": "UI & Web",
+    "client": "Novartis",
+    "agency": "90ten",
+    "desc": "Design & Javascript Development of interactive experience explaining the functional pathway of new psoriasis drug Cosentyx.",
+    "link": "http://demo.alpineldn.com/cosentyx/",
+
+    "img": "/img/1-3.png",
+    "imgs": [
+      { "img": "/img/Cosentyx-1.png", "desc": "" },
+      { "img": "/img/3-2.png", "desc": "" },
+      { "img": "/img/5-2.png", "desc": "" },
+      { "img": "/img/6-2.png", "desc": "" }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Cyclone",
+    "tag": "cyclone",
+    "category": "Brand & Web Development",
+    "client": "Cyclone Promotions",
+    "agency": "SEI",
+    "desc": "Cyclone Promotions is aiming to raise the standard of Boxing promotions in Britain and Ireland. The Cyclone name is derived from CEO Barry Mcguigan’s ring nickname ‘The Clones Cyclone’. Whilst steeped in sport heritage, the team were looking for a strong ID that would carry their vision of modern, competitive boxing. Brand Development covered everything from ID to arena decals and Digital.",
+    "link": "",
+
+    "img": "/img/1_banners_1600x800-2.jpg",
+    "imgs": [
+      { "img": "/img/5.jpg", "desc": "" },
+      { "img": "/img/2-5.jpg", "desc": "" },
+      { "img": "/img/1-6.jpg", "desc": "" },
+      { "img": "/img/3-4.jpg", "desc": "" },
+      { "img": "/img/4-3.jpg", "desc": "" },
+      { "img": "/img/6.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Feefo",
+    "tag": "feefo",
+    "category": "web",
+    "client": "feefo",
+    "agency": "",
+    "desc": "Digital platform for the Feefo Trusted Service Awards 2017 - celebrating the companies that provide the best customer experiences. Full-service package included UI, UX, Build, CMS, Winner Portal, Awards ID, UI Event Tracking & DevOps.",
+    "link": "https://trustedservice.feefo.com/",
+
+    "img": "/img/p3.jpg",
+    "imgs": [
+      { "img": "/img/Feefo-Trusted-Service-Awards-2019.png", "desc": "" },
+      { "img": "/img/Feefo-Trusted-Service-Awards-20191.png", "desc": "" },
+      { "img": "/img/Feefo-Trusted-Service-Awards-20192.png", "desc": "" },
+      { "img": "/img/Feefo-Trusted-Service-Awards-20193.png", "desc": "" },
+      { "img": "/img/Feefo-Trusted-Service-Awards-20194.png", "desc": "" },
+      { "img": "/img/Feefo-Trusted-Service-Awards-20195.png", "desc": "" },
+      { "img": "/img/Feefo-Trusted-Service-Awards-20196.png", "desc": "" },
+      {
+        "img": "/img/Feefo-Trusted-Service-Awards-Winner-s-Login-Area.png",
+        "desc": ""
+      },
+
+      {
+        "img": "/img/Gold-Trusted-Service-Feefo-Trusted-Service-awards-2019.png",
+        "desc": ""
+      },
+      {
+        "img": "/img/Gold-Trusted-Service-Feefo-Trusted-Service-awards-20192.png",
+        "desc": ""
+      },
+      {
+        "img": "/img/Gold-Trusted-Service-Feefo-Trusted-Service-awards-20193.png",
+        "desc": ""
+      },
+      {
+        "img": "/img/Feefo-Trusted-Service-Awards-Frequently-Asked-Questions.png",
+        "desc": ""
+      },
+      { "img": "/img/Feefo-Trusted-Service-Awards-Contact-Us.png", "desc": "" },
+      { "img": "/img/1-1.png", "desc": "" },
+      { "img": "/img/2-1.png", "desc": "" },
+      { "img": "/img/4-1.png", "desc": "" },
+      { "img": "/img/3-1.png", "desc": "" },
+      { "img": "/img/5-1.png", "desc": "" },
+      { "img": "/img/6-1.png", "desc": "" },
+      { "img": "/img/8.png", "desc": "" }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Felt",
+    "tag": "felt",
+    "category": "Brand & Game UI Design",
+    "client": "Felt Gaming",
+    "agency": "",
+    "desc": "Felt is founded upon a heritage of proven game formats, authentic styling and aspirational real life casino experiences. At the meeting point of classic real life casino vernacular and modern interaction design, Felt is disrupting the marketplace. Felt is unique in the online casino market, owning a range of highly successful games which it makes available through many of the major operators. These games, whilst hugely popular for many years, have been given an update. The brand and user experience have a retro-modern Americana feel. A full brand review resulted in the output of Brand Guidelines along with updates to game logos and UI design for 11 games.",
+    "link": "",
+
+    "img": "/img/1_banners_1600x800.jpg",
+    "imgs": [
+      { "img": "/img/2-2.jpg", "desc": "" },
+      { "img": "/img/1-2.jpg", "desc": "" },
+      { "img": "/img/3-2.jpg", "desc": "" },
+      { "img": "/img/4-2.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Felt Gaming",
+    "tag": "felt-gaming",
+    "category": "web",
+    "client": "",
+    "agency": "",
+    "desc": "Full UX/UI Design and Development with CMS, game portfolio and client portal for one of the leading online gaming providers.",
+    "link": "https://feltgaming.com/",
+
+    "img": "/img/p4.jpg",
+    "imgs": [
+      { "img": "/img/Felt-Felt-Gaming.png", "desc": "" },
+      { "img": "/img/Felt-Felt-Gaming2.png", "desc": "" },
+      { "img": "/img/Felt-Felt-Gaming3.png", "desc": "" },
+      { "img": "/img/Blackjack-Perfect-Pairs-Felt-Gaming6.png", "desc": "" },
+      { "img": "/img/Blackjack-Perfect-Pairs-Felt-Gaming6.png", "desc": "" },
+      { "img": "/img/Caribbean-Blackjack-Felt-Gaming8.png", "desc": "" }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Fine Art Mouldings",
+    "tag": "fine-art-mouldings",
+    "category": "web",
+    "client": "Fine Art Mouldings",
+    "agency": "",
+    "desc": "UI, UX & Web Development for a unique firm of expert craftsmen working with plaster decorative mouldings - there are now only a select few companies that deal with this kind of work in Europe. Built in React for a smooth experience.",
+    "link": "https://www.fineartmouldings.co.uk/",
+
+    "img": "/img/fineartmouldings.jpg",
+    "imgs": [
+      { "img": "/img/Home-Fine-Art-Mouldings.png", "desc": "" },
+      { "img": "/img/Home-Fine-Art-Mouldings-1.png", "desc": "" },
+      { "img": "/img/Home-Fine-Art-Mouldings-2.png", "desc": "" },
+      { "img": "/img/Services-Fine-Art-Mouldings.png", "desc": "" },
+      { "img": "/img/Products-Fine-Art-Mouldings.png", "desc": "" },
+      { "img": "/img/Projects-Fine-Art-Mouldings.png", "desc": "" },
+      {
+        "img": "/img/Les-Abassadeurs-Club-Projects-Fine-Art-Mouldings.png",
+        "desc": ""
+      },
+      { "img": "/img/Tate-Modern-Projects-Fine-Art-Mouldings.png", "desc": "" },
+      { "img": "/img/Contact-Fine-Art-Mouldings.png", "desc": "" }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Flesh & Buns",
+    "tag": "flesh-buns",
+    "category": "web",
+    "client": "Flesh & Buns",
+    "agency": "",
+    "desc": "",
+    "link": "https://www.fleshandbuns.com/",
+
+    "img": "/img/19-1.jpg",
+    "imgs": [
+      { "img": "/img/Flesh-Buns-Japanese-Izakaya-Restaurants.jpg", "desc": "" },
+      { "img": "/img/Flesh-Buns-Fitzrovia-Flesh-Buns.jpg", "desc": "" },
+      {
+        "img": "/img/Flesh-Buns-Fitzrovia-Flesh-Buns-gallery2.jpg",
+        "desc": ""
+      },
+      { "img": "/img/Promotions-Flesh-Buns.jpg", "desc": "" },
+      { "img": "/img/Find-Us-Flesh-Buns.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 26,
+    "title": "Francesco Molinari",
+    "tag": "francesco-molinari",
+    "category": "Web Development",
+    "client": "Francesco Molinari",
+    "agency": "SEI",
+    "desc": "Brand development, fansite and social media for European Tour player and Nike team member Francesco Molinari. The brief included hints to Francesco’s Italian roots whilst developing something fresh, strong and modern - a point of difference in the golf world.",
+    "link": "",
+
+    "img": "/img/banners_1600x800-5.jpg",
+    "imgs": [
+      { "img": "/img/1-8.jpg", "desc": "" },
+      { "img": "/img/2-7.jpg", "desc": "" },
+      { "img": "/img/4-4.jpg", "desc": "" },
+      { "img": "/img/5-1.jpg", "desc": "" },
+      { "img": "/img/6-1.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Frank",
+    "tag": "frank",
+    "category": "Brand & Web",
+    "client": "Frank",
+    "agency": "",
+    "desc": "Full Brand Development, Visual Language & Corporate Website for business performance disruptors The Frank Group.",
+    "link": "http://wearefrank.london/",
+
+    "img": "/img/p2.jpg",
+    "imgs": [
+      { "img": "/img/Home-The-Frank-Group.jpg", "desc": "" },
+      { "img": "/img/About-us-The-Frank-Group.jpg", "desc": "" },
+      { "img": "/img/Our-thinking-The-Frank-Group.jpg", "desc": "" },
+      { "img": "/img/Breaking-up-is-hard-The-Frank-Group.jpg", "desc": "" },
+      { "img": "/img/Contact-The-Frank-Group.jpg", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v3.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v36.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v37.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v38.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v39.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v310.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v311.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v312.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v313.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v314.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v315.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v316.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v317.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v318.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v319.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v320.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v321.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v322.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v323.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v324.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v325.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v326.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v327.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v328.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v329.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v330.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v331.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v332.jpg", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v333.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v334.png", "desc": "" },
+      { "img": "/img/Frank-Brand-Guidelines_v335.png", "desc": "" },
+      { "img": "/img/li_2019_3_.png", "desc": "" },
+      { "img": "/img/li_2019_3_2.png", "desc": "" },
+      { "img": "/img/li_2019_3_3.png", "desc": "" },
+      { "img": "/img/li_2019_3_4.png", "desc": "" },
+      { "img": "/img/li_2019_3_5.png", "desc": "" },
+      { "img": "/img/li_2018_2.png", "desc": "" },
+      { "img": "/img/li_2018_22.png", "desc": "" }
+    ]
+  },
+  {
+    "id": 21,
+    "title": "HMD",
+    "tag": "hmd",
+    "category": "Brand & Web",
+    "client": "HMD Global",
+    "agency": "Noire",
+    "desc": "UI Design & Build for the new licensee, producer & marketer of Nokia mobile phones.",
+    "link": "http://demo.alpineldn.com/hmd-global/",
+
+    "img": "/img/cover.png",
+    "imgs": [{ "img": "/img/1-5.png", "desc": "" }]
+  },
+  {
+    "id": 14,
+    "title": "HSBC Interactive Videos",
+    "tag": "hsbc-interactive-videos",
+    "category": "UI, UX",
+    "client": "HSBC Private Banking",
+    "agency": "The Edge Picture Company",
+    "desc": "",
+    "link": "",
+
+    "img": "/img/hsbc_private.jpg",
+    "imgs": [
+      { "img": "/img/ui_mockup_screen1.jpg", "desc": "" },
+      { "img": "/img/ui_mockup_screen2.jpg", "desc": "" },
+      { "img": "/img/ui_mockup_screen3.jpg", "desc": "" },
+      { "img": "/img/ui_mockup_screen4.jpg", "desc": "" },
+      { "img": "/img/ui_mockup_screen5.jpg", "desc": "" },
+      { "img": "/img/ui_mockup_screen6.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 24,
+    "title": "ISF",
+    "tag": "isf",
+    "category": "Web Development",
+    "client": "ISF",
+    "agency": "SSG",
+    "desc": "",
+    "link": "https://www.securityforum.org/",
+
+    "img": "/img/banners_1600x800-2.jpg",
+    "imgs": [{ "img": "/img/1-3.jpg", "desc": "" }]
+  },
+  {
+    "id": 10,
+    "title": "Matter",
+    "tag": "matter",
+    "category": "web",
+    "client": "Matter",
+    "agency": "",
+    "desc": "UI, UX & Build for Matter - a leading Brand Experience agency.",
+    "link": "http://matterxp.com/",
+
+    "img": "/img/8.jpg",
+    "imgs": [
+      { "img": "/img/1.png", "desc": "" },
+      { "img": "/img/2.png", "desc": "" },
+      { "img": "/img/3-8.jpg", "desc": "" },
+      { "img": "/img/6.png", "desc": "" },
+      { "img": "/img/7.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "SBM",
+    "tag": "sbm",
+    "category": "web",
+    "client": "SBM Corporate Real Estate",
+    "agency": "",
+    "desc": "Design & Build for Corporate Real Estate firm SBM.",
+    "link": "http://www.sbmcre.com/",
+
+    "img": "/img/home.jpg",
+    "imgs": [
+      { "img": "/img/1-11.jpg", "desc": "" },
+      { "img": "/img/2-10.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Schweppes",
+    "tag": "schweppes",
+    "category": "web",
+    "client": "Schweppes",
+    "agency": "Mesh Marketing",
+    "desc": "Interactive presentation and microsite for iconic brand Schweppes. Partnering with Mesh Marketing, we produced a rich html creative optimised for delivery on iOS - leveraging device gyroscope, accelerometer and touch gestures for parallax, rotation and video effects.",
+    "link": "http://demo.alpineldn.com/scoc/",
+
+    "img": "/img/25.jpg",
+    "imgs": [
+      { "img": "/img/11-1.jpg", "desc": "" },
+      { "img": "/img/3-9.jpg", "desc": "" },
+      { "img": "/img/4-6.jpg", "desc": "" },
+      { "img": "/img/5-2.jpg", "desc": "" },
+      { "img": "/img/6-2.jpg", "desc": "" },
+      { "img": "/img/11-2.jpg", "desc": "" },
+      { "img": "/img/12.jpg", "desc": "" },
+      { "img": "/img/13.jpg", "desc": "" },
+      { "img": "/img/14.jpg", "desc": "" },
+      { "img": "/img/17.jpg", "desc": "" },
+      { "img": "/img/19.jpg", "desc": "" },
+      { "img": "/img/22.jpg", "desc": "" },
+      { "img": "/img/24.jpg", "desc": "" },
+      { "img": "/img/25.jpg", "desc": "" },
+      { "img": "/img/26.jpg", "desc": "" },
+      { "img": "/img/27.jpg", "desc": "" },
+      { "img": "/img/28.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 20,
+    "title": "shackleton club",
+    "tag": "shackleton-club",
+    "category": "Brand & Web Development",
+    "client": "The Shackleton Club",
+    "agency": "SSG",
+    "desc": "Full brand and web development for an exciting, unique financial group based in the City of London. Inspired by Sir Ernest Shackleton, The Shackleton Club embarks on a journey to navigate uncharted territory of the financial industry. Events offer members a forum for emerging investment opportunities and developments. Throughout the project a full branding exercise was performed along with the design of printed materials and development of a responsive website.",
+    "link": "",
+
+    "img": "/img/1_banners_1600x800-1.jpg",
+    "imgs": [
+      { "img": "/img/1-4.jpg", "desc": "" },
+      { "img": "/img/2-3.jpg", "desc": "" },
+      { "img": "/img/3-3.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Signature Mixers",
+    "tag": "signature-mixers",
+    "category": "web",
+    "client": "Schweppes",
+    "agency": "Mesh Marketing",
+    "desc": "",
+    "link": "http://demo.alpineldn.com/sigmix/",
+
+    "img": "/img/p1.png",
+    "imgs": [
+      { "img": "/img/Schweppes-Signature-Mixers.jpg", "desc": "" },
+      { "img": "/img/Schweppes-Signature-Mixers2.jpg", "desc": "" },
+      { "img": "/img/Schweppes-Signature-Mixers3.jpg", "desc": "" },
+      { "img": "/img/Schweppes-Signature-Mixers4.jpg", "desc": "" },
+      { "img": "/img/Schweppes-Signature-Mixers5.jpg", "desc": "" },
+      { "img": "/img/Schweppes-Signature-Mixers8.jpg", "desc": "" },
+      { "img": "/img/Schweppes-Signature-Mixers9.jpg", "desc": "" },
+      { "img": "/img/Schweppes-Signature-Mixers11.jpg", "desc": "" },
+      { "img": "/img/Schweppes-Signature-Mixers12.jpg", "desc": "" },
+      { "img": "/img/Schweppes-Signature-Mixers13.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Snap-on",
+    "tag": "snap-on",
+    "category": "Microsite & Email Campaigns",
+    "client": "Snap-on/Yamaha",
+    "agency": "SEI",
+    "desc": "Cross-channel campaign for a Snap-on/Yamaha partnership to increase usage of Snap-on tools in workshops. A partnership enabled us to utilise Yamaha's distributor networks to encourage adoption of Snap-on lease plans and the Panasonic Toughbook range preloaded with the Yamaha VCI for diagnostics. A microsite, digital brochure and strategic email campaigns were produced in four languages.",
+    "link": "",
+
+    "img": "/img/banners_1600x800-1.jpg",
+    "imgs": [
+      { "img": "/img/1-1.jpg", "desc": "" },
+      { "img": "/img/2-1.jpg", "desc": "" },
+      { "img": "/img/3-1.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "SSG",
+    "tag": "ssg",
+    "category": "Brand & Web",
+    "client": "",
+    "agency": "",
+    "desc": "Complete Design & Build with CMS for Events and Experiential agency SSG. Brand evolution included Design System, Collateral, Presentation Templates & Stationary.",
+    "link": "",
+
+    "img": "/img/banners_1600x800-3.jpg",
+    "imgs": [
+      { "img": "/img/1-5.jpg", "desc": "" },
+      { "img": "/img/2-4.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 25,
+    "title": "Tapsley",
+    "tag": "tapsley",
+    "category": "Brand Development",
+    "client": "Tapsley",
+    "agency": "Noire",
+    "desc": "Tapsley is your personal shopping companion, fetching the latest deals & discounts that are near & relevant to you, both online & in-store. Alpine partnered with Noire to provide a full brand package for Tapsley and the app, based in the City of London. A ground up rebranding exercise, consultation and research led to brand guidelines and a range collateral including: stationary, point-of-sale, clothing, merchandise, reports, infographics and customer-facing communications.",
+    "link": "",
+
+    "img": "/img/1.jpg",
+    "imgs": [
+      { "img": "/img/2.jpg", "desc": "" },
+      { "img": "/img/3.jpg", "desc": "" },
+      { "img": "/img/4.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "TPS",
+    "tag": "tps",
+    "category": "Brand & Web",
+    "client": "TPS",
+    "agency": "",
+    "desc": "Brand and website update for an established building services and design consultancy. A full rebranding exercise was performed enhancing their already established brand, bringing it up to date. Based on this we then redesigned the website to give it a clean and modern feel.",
+    "link": "",
+
+    "img": "/img/banner.jpg",
+    "imgs": [
+      { "img": "/img/banner.jpg", "desc": "" },
+      { "img": "/img/12col_1600x600.jpg", "desc": "" },
+      { "img": "/img/6col_1200x800_2.jpg", "desc": "" },
+      { "img": "/img/6col_1200x800.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Trident",
+    "tag": "trident",
+    "category": "UI & Web Design",
+    "client": "Trident",
+    "agency": "Noire",
+    "desc": "Trident Sports Cars is the independant British manufacturer of the world's fastest diesel sports car. To coincide with the launch of two new models we were drafted for the design of a new website, with UI, to create a luxury experience.",
+    "link": "",
+
+    "img": "/img/banners_1600x800.jpg",
+    "imgs": [
+      { "img": "/img/1_12col_1600x600.jpg", "desc": "" },
+      { "img": "/img/2_12col_1600x600.jpg", "desc": "" },
+      { "img": "/img/3_12col_1600x600.jpg", "desc": "" },
+      { "img": "/img/4_12col_1600x600.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Turkish Airlines",
+    "tag": "turkish airlines",
+    "category": "Digital",
+    "client": "Turkish Airlines",
+    "agency": "SEI",
+    "desc": "Turkish Airlines needed an online solution to support activation of sponsorship in golf. Partnered with several prestigious professional and amateur events, Turkish airlines required a central website for all news and updates concerning the tournaments. Supporting the website a social media strategy was implemented along with the design of ads for the ATL campaign.",
+    "link": "",
+
+    "img": "/img/banners_1600x800-4.jpg",
+    "imgs": [
+      { "img": "/img/1-7.jpg", "desc": "" },
+      { "img": "/img/3-5.jpg", "desc": "" },
+      { "img": "/img/2-6.jpg", "desc": "" }
+    ]
+  },
+  {
+    "id": 22,
+    "title": "Turkish Airlines Open Video",
+    "tag": "turkish-airlines-open-video",
+    "category": "Video Production",
+    "client": "Turkish Airlines",
+    "agency": "SEI",
+    "desc": "",
+    "link": "",
+
+    "img": "/img/banners_1600x800_2.jpg",
+    "imgs": [],
+    "youtube": {
+      "src": "https://www.youtube.com/embed/OgyBxutBhVE?feature=oembed&controls=1&hd=1&autohide=1&rel=0&modestbranding=1&showinfo=0"
+    }
+  }
+]

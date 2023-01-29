@@ -1,0 +1,77 @@
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+}
+
+.container {
+  width: 100%;
+  height: inherit;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+}
+
+.menu,
+.logo {
+  padding: 2em;
+}
+
+@media only screen and (min-width: 768px) {
+  .menu,
+  .logo {
+    padding: 3em;
+  }
+}
+
+.rect {
+  transition: 0.25s ease-out;
+  fill: var(--accent-color);
+}
+
+.stroke {
+  stroke: var(--accent-color);
+  fill: transparent;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  transition: all 0.3s;
+}
+
+.stroke_small {
+  stroke: var(--accent-color);
+  fill: transparent;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  transition: all 0.3s;
+}
+
+.text {
+  text-transform: uppercase;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--accent-color);
+  width: 4rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .text {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    width: 5rem;
+  }
+}
+
+.parallax {
+  transition: all 0.3s;
+}
+
+.arrow {
+  fill: var(--accent-color);
+}

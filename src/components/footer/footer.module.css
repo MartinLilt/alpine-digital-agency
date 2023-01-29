@@ -1,0 +1,52 @@
+.footer {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  color: var(--accent-color);
+  padding: 0 0 8rem 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+.title {
+  padding: 0 0 1rem 0;
+}
+
+.text {
+  margin: 0 0 4rem 0;
+  width: 60%;
+}
+
+@media only screen and (min-width: 768px) {
+  .text {
+    width: 70%;
+  }
+}
+
+.mail,
+.born {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.mail {
+  margin: 0 0 4rem 0;
+  display: block;
+  width: min-content;
+}
+
+@media only screen and (min-width: 768px) {
+  .mail {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .born {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
