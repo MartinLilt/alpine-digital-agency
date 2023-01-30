@@ -8,7 +8,6 @@ const Portfolio = ({ options }) => {
       <section>
         <ul>
           <div className="container">
-            {console.log(randomCard)}
             <div>
               <h2 className={s.title}>Works</h2>
               <div className={s.container}>
