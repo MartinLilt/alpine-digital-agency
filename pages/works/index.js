@@ -3,7 +3,7 @@ import Portfolio from "../../src/components/portfolio";
 import Head from "next/head";
 import DATA from "../../cards/cases.json";
 
-const Works = ({ cards }) => {
+const Works = ({ cards, randomCard }) => {
   return (
     <>
       <Head>
@@ -11,7 +11,7 @@ const Works = ({ cards }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout isFooter isWorks>
-        <Portfolio options={cards} />
+        <Portfolio options={cards} randomCard={randomCard} />
       </Layout>
     </>
   );
@@ -19,10 +19,12 @@ const Works = ({ cards }) => {
 
 export async function getStaticProps() {
   const cards = DATA;
+  const randomCard = cards.find((card) => card.id === 22);
 
   return {
     props: {
       cards,
+      randomCard,
     }, // will be passed to the page component as props
     revalidate: 10,
   };

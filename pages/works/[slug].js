@@ -8,57 +8,59 @@ const WorkCase = ({ card }) => {
   const options = imgs || [];
 
   return (
-    <Layout isWorks isWorksCategory>
+    <Layout isWorks isWorksCategory isFooterCategory>
       <section>
-        <StyledCard>
-          <StyledImage width={1600} height={1600} src={img} alt={title} />
-        </StyledCard>
-        <div className="container">
-          <StyledTitle>{title}</StyledTitle>
-          <StyledList>
-            {desc && (
-              <StyledCategory>
-                <p>{desc}</p>
-              </StyledCategory>
-            )}
-            {client && (
-              <StyledCategory>
-                <p>Client: {client}</p>
-              </StyledCategory>
-            )}
-            {agency && (
-              <StyledCategory>
-                <p>Agency: {agency}</p>
-              </StyledCategory>
-            )}
-            {link && (
-              <StyledCategory>
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover"
-                >
-                  {link}
-                </a>
-              </StyledCategory>
-            )}
-          </StyledList>
-          <ul>
-            {options.map((item, id) => {
-              return (
-                <StyledPicture key={id}>
-                  <StyledImage
-                    width={1600}
-                    height={1600}
-                    src={item.img}
-                    alt={item.desc}
-                  />
-                </StyledPicture>
-              );
-            })}
-          </ul>
-        </div>
+        <StyledImageContainer>
+          <StyledCard>
+            <StyledImage width={1600} height={1600} src={img} alt={title} />
+          </StyledCard>
+          <div className="container">
+            <StyledTitle>{title}</StyledTitle>
+            <StyledList>
+              {desc && (
+                <StyledCategory>
+                  <p>{desc}</p>
+                </StyledCategory>
+              )}
+              {client && (
+                <StyledCategory>
+                  <p>Client: {client}</p>
+                </StyledCategory>
+              )}
+              {agency && (
+                <StyledCategory>
+                  <p>Agency: {agency}</p>
+                </StyledCategory>
+              )}
+              {link && (
+                <StyledCategory>
+                  <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover"
+                  >
+                    {link}
+                  </a>
+                </StyledCategory>
+              )}
+            </StyledList>
+            <ul>
+              {options.map((item, id) => {
+                return (
+                  <StyledPicture key={id}>
+                    <StyledImage
+                      width={1600}
+                      height={1600}
+                      src={item.img}
+                      alt={item.desc}
+                    />
+                  </StyledPicture>
+                );
+              })}
+            </ul>
+          </div>
+        </StyledImageContainer>
       </section>
     </Layout>
   );
@@ -174,7 +176,11 @@ const StyledCategory = styled.li`
 `;
 
 const StyledPicture = styled.li`
-  &:not(:last-child) {
+  & {
     margin: 0 0 4rem 0;
   }
+`;
+
+const StyledImageContainer = styled.div`
+  overflow: auto;
 `;
