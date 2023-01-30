@@ -11,7 +11,7 @@ const Works = ({ cards }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout isFooter isWorks>
-        <Portfolio options={cards} randomCard={randomCard} />
+        <Portfolio options={cards} />
       </Layout>
     </>
   );
