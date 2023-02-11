@@ -4,6 +4,7 @@ import "normalize.css";
 import localFont from "@next/font/local";
 import PropTypes from "prop-types";
 import dynamic from "next/dynamic";
+import { AnimatePresence } from "framer-motion";
 
 const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
   ssr: false,

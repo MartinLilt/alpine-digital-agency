@@ -2,11 +2,23 @@ import s from "./portfolio.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import PropTypes from "prop-types";
+import { motion, AnimatePresence } from "framer-motion";
+
+const transition = {
+  duration: 120,
+};
 
 const Portfolio = ({ options }) => {
   return (
-    <>
-      <section data-scroll data-scroll-section>
+    <AnimatePresence exitBeforeEnter>
+      <motion.section
+        transition={transition}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        data-scroll
+        data-scroll-section
+      >
         <ul>
           <div className="container">
             <div>
@@ -24,8 +36,6 @@ const Portfolio = ({ options }) => {
                   {options?.map((item, id) => {
                     return (
                       <li
-                        transition={transition}
-                        exit={{ width: "100%" }}
                         key={id}
                         className={s.img}
                         title={item.title}
@@ -35,6 +45,7 @@ const Portfolio = ({ options }) => {
                         data-scroll-offset={`${45 + id}%, 25%`}
                       >
                         <Link
+                          transition={transition}
                           href={{
                             pathname: `/works/${item.tag}`,
                           }}
@@ -50,7 +61,7 @@ const Portfolio = ({ options }) => {
                               className={s.content_img}
                             />
                           </span>
-                          <span exit={{ opacity: 0 }} transition={transition}>
+                          <span>
                             <p className={s.name}>{item.title}</p>
                             <p className={s.tag}>{item.category}</p>
                           </span>
@@ -63,8 +74,8 @@ const Portfolio = ({ options }) => {
             </div>
           </div>
         </ul>
-      </section>
-    </>
+      </motion.section>
+    </AnimatePresence>
   );
 };
 
