@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { useLocomotiveScroll } from "react-locomotive-scroll";
 
 const Header = ({
   isAbout = false,
@@ -18,7 +17,6 @@ const Header = ({
   const isOpen = modalState || isAbout || isWorks ? "#d12245" : "#fff";
   const isPageActive = isAbout || isWorks || isWorksCategory ? url : "/";
   const isModalOpenOnWorksCategory = isWorksCategory && !modalState;
-  const { scroll } = useLocomotiveScroll();
 
   useEffect(() => {
     modalState
@@ -32,7 +30,7 @@ const Header = ({
 
   return (
     <div data-scroll-section>
-      <header className={s.header}>
+      <header className={s.header} initial={{ opacity: 0 }}>
         <div className={s.container}>
           <div className={s.flex}>
             <button type="button" onClick={modalState ? toggleModal : null}>

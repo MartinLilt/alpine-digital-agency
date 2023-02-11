@@ -24,6 +24,8 @@ const Portfolio = ({ options }) => {
                   {options?.map((item, id) => {
                     return (
                       <li
+                        transition={transition}
+                        exit={{ width: "100%" }}
                         key={id}
                         className={s.img}
                         title={item.title}
@@ -48,7 +50,7 @@ const Portfolio = ({ options }) => {
                               className={s.content_img}
                             />
                           </span>
-                          <span>
+                          <span exit={{ opacity: 0 }} transition={transition}>
                             <p className={s.name}>{item.title}</p>
                             <p className={s.tag}>{item.category}</p>
                           </span>

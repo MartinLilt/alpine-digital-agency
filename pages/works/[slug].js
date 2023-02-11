@@ -10,79 +10,84 @@ const WorkCase = ({ card }) => {
   const options = imgs || [];
 
   return (
-    <Layout isWorks isWorksCategory isFooterCategory>
-      <section data-scroll data-scroll-section>
-        <StyledImageContainer>
-          <StyledCard>
-            <StyledImage width={1600} height={1600} src={img} alt={title} />
-          </StyledCard>
-          <div className="container">
-            <StyledTitle
-              data-scroll
-              data-scroll-class="slug-page"
-              data-scroll-repeat="true"
-              data-scroll-speed="1"
-            >
-              {title}
-            </StyledTitle>
-            <StyledList
-              data-scroll
-              data-scroll-class="slug-page"
-              data-scroll-repeat="true"
-              data-scroll-speed="1"
-            >
-              {desc && (
-                <StyledCategory>
-                  <p>{desc}</p>
-                </StyledCategory>
-              )}
-              {client && (
-                <StyledCategory>
-                  <p>Client: {client}</p>
-                </StyledCategory>
-              )}
-              {agency && (
-                <StyledCategory>
-                  <p>Agency: {agency}</p>
-                </StyledCategory>
-              )}
-              {link && (
-                <StyledCategory>
-                  <a
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover"
-                  >
-                    {link}
-                  </a>
-                </StyledCategory>
-              )}
-            </StyledList>
-            <ul>
-              {options.map((item, id) => {
-                return (
-                  <StyledPicture
-                    key={id}
-                    data-scroll
-                    data-scroll-repeat="true"
-                    data-scroll-offset={`${25 + id}%, 25%`}
-                    data-scroll-class="slug-page"
-                  >
-                    <StyledImage
-                      width={1600}
-                      height={1600}
-                      src={item.img}
-                      alt={item.desc}
-                    />
-                  </StyledPicture>
-                );
-              })}
-            </ul>
-          </div>
-        </StyledImageContainer>
-      </section>
-    </Layout>
+    <>
+      <Layout isWorks isWorksCategory isFooterCategory>
+        <section data-scroll data-scroll-section>
+          <StyledImageContainer>
+            <StyledCard>
+              <StyledImage width={1600} height={1600} src={img} alt={title} />
+            </StyledCard>
+            <div className="container">
+              <div>
+                <StyledTitle
+                  data-scroll
+                  data-scroll-class="slug-page"
+                  data-scroll-repeat="true"
+                  data-scroll-speed="1"
+                >
+                  {title}
+                </StyledTitle>
+                <StyledList
+                  data-scroll
+                  data-scroll-class="slug-page"
+                  data-scroll-repeat="true"
+                  data-scroll-speed="1"
+                >
+                  {desc && (
+                    <StyledCategory>
+                      <p>{desc}</p>
+                    </StyledCategory>
+                  )}
+                  {client && (
+                    <StyledCategory>
+                      <p>Client: {client}</p>
+                    </StyledCategory>
+                  )}
+                  {agency && (
+                    <StyledCategory>
+                      <p>Agency: {agency}</p>
+                    </StyledCategory>
+                  )}
+                  {link && (
+                    <StyledCategory>
+                      <a
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover"
+                      >
+                        {link}
+                      </a>
+                    </StyledCategory>
+                  )}
+                </StyledList>
+              </div>
+
+              <ul>
+                {options.map((item, id) => {
+                  return (
+                    <StyledPicture
+                      key={id}
+                      data-scroll
+                      data-scroll-repeat="true"
+                      data-scroll-offset={`${25 + id}%, 25%`}
+                      data-scroll-class="slug-page"
+                    >
+                      <StyledImage
+                        width={1600}
+                        height={1600}
+                        src={item.img}
+                        alt={item.desc}
+                      />
+                    </StyledPicture>
+                  );
+                })}
+              </ul>
+            </div>
+          </StyledImageContainer>
+        </section>
+      </Layout>
+    </>
   );
 };
 
