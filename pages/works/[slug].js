@@ -2,6 +2,8 @@ import Layout from "../../src/components/layout";
 import Image from "next/image";
 import styled from "styled-components";
 import DATA from "../../cards/cases.json";
+import PropTypes from "prop-types";
+import React from "react";
 
 const WorkCase = ({ card }) => {
   const { img, imgs, title, desc, client, agency, link } = card;
@@ -9,14 +11,26 @@ const WorkCase = ({ card }) => {
 
   return (
     <Layout isWorks isWorksCategory isFooterCategory>
-      <section>
+      <section data-scroll data-scroll-section>
         <StyledImageContainer>
           <StyledCard>
             <StyledImage width={1600} height={1600} src={img} alt={title} />
           </StyledCard>
           <div className="container">
-            <StyledTitle>{title}</StyledTitle>
-            <StyledList>
+            <StyledTitle
+              data-scroll
+              data-scroll-class="slug-page"
+              data-scroll-repeat="true"
+              data-scroll-speed="1"
+            >
+              {title}
+            </StyledTitle>
+            <StyledList
+              data-scroll
+              data-scroll-class="slug-page"
+              data-scroll-repeat="true"
+              data-scroll-speed="1"
+            >
               {desc && (
                 <StyledCategory>
                   <p>{desc}</p>
@@ -48,7 +62,13 @@ const WorkCase = ({ card }) => {
             <ul>
               {options.map((item, id) => {
                 return (
-                  <StyledPicture key={id}>
+                  <StyledPicture
+                    key={id}
+                    data-scroll
+                    data-scroll-repeat="true"
+                    data-scroll-offset={`${25 + id}%, 25%`}
+                    data-scroll-class="slug-page"
+                  >
                     <StyledImage
                       width={1600}
                       height={1600}
@@ -84,8 +104,6 @@ export const getStaticProps = async ({ params }) => {
     revalidate: 10,
   };
 };
-
-export default WorkCase;
 
 const StyledImage = styled(Image)`
   width: auto;
@@ -125,6 +143,7 @@ const StyledCard = styled.div`
 const StyledList = styled.ul`
   margin: 0 0 6rem 0;
   padding: 4rem 0 0 0;
+  opacity: 0;
 `;
 
 const StyledTitle = styled.h1`
@@ -133,6 +152,7 @@ const StyledTitle = styled.h1`
   line-height: 2.5rem;
   color: var(--main-color);
   margin: 0;
+  opacity: 0;
 
   @media only screen and (min-width: 768px) {
     & {
@@ -178,9 +198,31 @@ const StyledCategory = styled.li`
 const StyledPicture = styled.li`
   & {
     margin: 0 0 4rem 0;
+    opacity: 0;
+    transition: all 2s;
   }
 `;
 
 const StyledImageContainer = styled.div`
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 `;
+
+WorkCase.propTypes = {
+  card: PropTypes.shape({
+    img: PropTypes.string.isRequired,
+    imgs: PropTypes.arrayOf(
+      PropTypes.shape({
+        img: PropTypes.string.isRequired,
+        desc: PropTypes.string,
+      })
+    ),
+    title: PropTypes.string.isRequired,
+    desc: PropTypes.string,
+    client: PropTypes.string,
+    agency: PropTypes.string,
+    link: PropTypes.string,
+  }).isRequired,
+};
+
+export default React.memo(WorkCase);

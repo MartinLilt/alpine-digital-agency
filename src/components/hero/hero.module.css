@@ -4,6 +4,7 @@
 }
 
 .title {
+  opacity: 0;
   margin: auto 0;
   font-size: 2.25rem;
   line-height: 2.5rem;
@@ -27,6 +28,7 @@
 
 .hero::before {
   position: absolute;
+
   content: "";
   left: 0;
   top: 0;
@@ -42,6 +44,7 @@
 
 .hero::after {
   position: absolute;
+
   content: "";
   left: 0;
   bottom: 0;
@@ -84,6 +87,11 @@
   }
 }
 
+.title_container {
+  opacity: 0;
+  transition: all 1s;
+}
+
 .name {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -113,7 +121,7 @@
 
 .img {
   cursor: pointer;
-  opacity: 70%;
+  opacity: 0;
   transition: all 0.3s;
 }
 
@@ -219,4 +227,19 @@
   .container {
     padding: 0 0 5rem 0;
   }
+}
+
+.img_scroll {
+  opacity: 40%;
+  transition: opacity 1s, transform 2s;
+}
+
+.title_scroll {
+  opacity: 1;
+  transition: opacity 4s;
+}
+
+.title_container_scroll {
+  opacity: 1;
+  transition: opacity 2s;
 }

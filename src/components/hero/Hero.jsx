@@ -1,20 +1,12 @@
 import s from "./hero.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useRef, useEffect, useState } from "react";
-gsap.registerPlugin(ScrollTrigger);
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 const Hero = ({ options }) => {
   const [data, setData] = useState(null);
-  const ref = useRef(null);
   const optionCardsAmout = 4;
-
-  useEffect(() => {
-    const el = ref.current;
-    gsap.to(el, {});
-  }, []);
 
   useEffect(() => {
     if (options.length >= optionCardsAmout)
@@ -22,11 +14,17 @@ const Hero = ({ options }) => {
   }, [options]);
 
   return (
-    <section>
+    <section data-scroll data-scroll-section>
       <div className={s.hero}>
         <div className="container">
           <div className={s.flex}>
-            <h1 className={s.title}>
+            <h1
+              className={s.title}
+              data-scroll
+              data-scroll-class={s.title_scroll}
+              data-scroll-repeat="true"
+              data-scroll-speed="6"
+            >
               Brand+Digital <br />
               Design Studio
             </h1>
@@ -36,11 +34,20 @@ const Hero = ({ options }) => {
 
       <div className="container">
         <div>
-          <h2 className={s.brand_title} ref={ref}>
-            Building brands & digital experiences for over twenty years
-          </h2>
+          <div
+            className={s.title_container}
+            data-scroll
+            data-scroll-class={s.title_container_scroll}
+            data-scroll-speed="1"
+            data-scroll-repeat="true"
+            data-scroll-offset="45%, 25%"
+          >
+            <h2 className={s.brand_title}>
+              Building brands & digital experiences for over twenty years
+            </h2>
+            <p className={s.sup_title}>Featured Works_</p>
+          </div>
           <div className={s.container}>
-            <h3 className={s.sup_title}>Featured Works_</h3>
             <ul className={s.list}>
               {data?.map((item, id) => {
                 return (
@@ -48,6 +55,10 @@ const Hero = ({ options }) => {
                     key={id}
                     className={s.img}
                     title={`Tap to see more about "${item.title}" case.`}
+                    data-scroll
+                    data-scroll-class={s.img_scroll}
+                    data-scroll-repeat="true"
+                    data-scroll-offset={`${45 + id}%, 25%`}
                   >
                     <Link href={`/works/${item.tag}`}>
                       <span className={s.content}>
@@ -78,6 +89,10 @@ const Hero = ({ options }) => {
       </div>
     </section>
   );
+};
+
+Hero.propTypes = {
+  options: PropTypes.array.isRequired,
 };
 
 export default Hero;

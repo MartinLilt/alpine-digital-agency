@@ -1,20 +1,37 @@
 import s from "./portfolio.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import PropTypes from "prop-types";
 
 const Portfolio = ({ options }) => {
   return (
     <>
-      <section>
+      <section data-scroll data-scroll-section>
         <ul>
           <div className="container">
             <div>
-              <h2 className={s.title}>Works</h2>
+              <h2
+                className={s.title}
+                data-scroll
+                data-scroll-class={s.title_scroll}
+                data-scroll-repeat="true"
+                data-scroll-speed="1"
+              >
+                Works
+              </h2>
               <div className={s.container}>
                 <ul className={s.list}>
                   {options?.map((item, id) => {
                     return (
-                      <li key={id} className={s.img} title={item.title}>
+                      <li
+                        key={id}
+                        className={s.img}
+                        title={item.title}
+                        data-scroll
+                        data-scroll-class={s.img_scroll}
+                        data-scroll-repeat="true"
+                        data-scroll-offset={`${45 + id}%, 25%`}
+                      >
                         <Link
                           href={{
                             pathname: `/works/${item.tag}`,
@@ -47,6 +64,17 @@ const Portfolio = ({ options }) => {
       </section>
     </>
   );
+};
+
+Portfolio.propTypes = {
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      img: PropTypes.string.isRequired,
+      tag: PropTypes.string.isRequired,
+      category: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Portfolio;

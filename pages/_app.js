@@ -2,14 +2,15 @@ import "../styles/globals.css";
 import "tailwindcss/tailwind.css";
 import "normalize.css";
 import localFont from "@next/font/local";
+import PropTypes from "prop-types";
 import dynamic from "next/dynamic";
-
-const myFont = localFont({
-  src: "../src/assets/fonts/universFonts/UniversLT.ttf",
-});
 
 const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
   ssr: false,
+});
+
+const myFont = localFont({
+  src: "../src/assets/fonts/universFonts/UniversLT.ttf",
 });
 
 const App = ({ Component, pageProps }) => {
@@ -18,17 +19,16 @@ const App = ({ Component, pageProps }) => {
       <div className={myFont.className}>
         <Component {...pageProps} />
         <AnimatedCursor
-          outerSize={25}
-          outerAlpha={1}
-          innerScale={0.7}
-          outerScale={3}
-          hasBlendMode={true}
+          innerSize={8}
+          outerSize={48}
+          outerAlpha={0}
+          innerScale={0.1}
+          outerScale={2}
           outerStyle={{
-            border: "1px solid #fff",
-            backgroundColor: "none",
+            border: "0.1rem solid #fff",
           }}
           innerStyle={{
-            backgroundColor: "var(--cursor-color)",
+            backgroundColor: "transparent",
           }}
           clickables={[
             "a",
@@ -41,11 +41,17 @@ const App = ({ Component, pageProps }) => {
             "select",
             "textarea",
             "button",
-            ".hero_content",
+            ".link",
           ]}
         />
       </div>
     </>
   );
 };
+
+App.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.object.isRequired,
+};
+
 export default App;

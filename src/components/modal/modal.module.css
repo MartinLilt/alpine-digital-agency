@@ -4,7 +4,9 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  z-index: 99;
+  position: absolute;
+  width: 100%;
+  z-index: 999;
 }
 
 .flex {

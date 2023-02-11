@@ -3,10 +3,9 @@ import s from "./header.module.css";
 import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useRef, useEffect, useState } from "react";
-gsap.registerPlugin(ScrollTrigger);
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { useLocomotiveScroll } from "react-locomotive-scroll";
 
 const Header = ({
   isAbout = false,
@@ -16,15 +15,10 @@ const Header = ({
   let [modalState, setModalState] = useState(false);
   const router = useRouter();
   const url = router.asPath;
-  const ref = useRef(null);
   const isOpen = modalState || isAbout || isWorks ? "#d12245" : "#fff";
   const isPageActive = isAbout || isWorks || isWorksCategory ? url : "/";
   const isModalOpenOnWorksCategory = isWorksCategory && !modalState;
-
-  useEffect(() => {
-    const el = ref.current;
-    gsap.to(el, {});
-  }, []);
+  const { scroll } = useLocomotiveScroll();
 
   useEffect(() => {
     modalState
@@ -37,7 +31,7 @@ const Header = ({
   };
 
   return (
-    <div>
+    <div data-scroll-section>
       <header className={s.header}>
         <div className={s.container}>
           <div className={s.flex}>
@@ -70,7 +64,7 @@ const Header = ({
                   </svg>
                 )}
                 {!isWorks ? (
-                  <StyledText className={s.text} color={isOpen} ref={ref}>
+                  <StyledText className={s.text} color={isOpen}>
                     ALPINE
                   </StyledText>
                 ) : null}
@@ -112,8 +106,6 @@ const Header = ({
   );
 };
 
-export default Header;
-
 const StyledMenu = styled.rect`
   fill: ${(props) => props.fill || "inherit"};
 `;
@@ -127,3 +119,11 @@ const StyledText = styled.p`
   color: ${(props) => props.color || "#fff"};
   transition: all 0.3s;
 `;
+
+Header.propTypes = {
+  isAbout: PropTypes.bool,
+  isWorks: PropTypes.bool,
+  isWorksCategory: PropTypes.bool,
+};
+
+export default Header;

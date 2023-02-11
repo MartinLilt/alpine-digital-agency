@@ -2,6 +2,8 @@ import Layout from "../../src/components/layout";
 import Portfolio from "../../src/components/portfolio";
 import Head from "next/head";
 import DATA from "../../cards/cases.json";
+import PropTypes from "prop-types";
+import React from "react";
 
 const Works = ({ cards }) => {
   return (
@@ -30,4 +32,28 @@ export async function getStaticProps() {
   };
 }
 
-export default Works;
+Works.propTypes = {
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      img: PropTypes.string.isRequired,
+      imgs: PropTypes.arrayOf(
+        PropTypes.shape({
+          img: PropTypes.string.isRequired,
+          desc: PropTypes.string.isRequired,
+        })
+      ),
+      title: PropTypes.string.isRequired,
+      desc: PropTypes.string.isRequired,
+      client: PropTypes.string,
+      agency: PropTypes.string,
+      link: PropTypes.string,
+    })
+  ),
+};
+
+Works.defaultProps = {
+  cards: [],
+};
+
+export default React.memo(Works);

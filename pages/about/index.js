@@ -1,6 +1,7 @@
 import Layout from "../../src/components/layout";
 import Info from "../../src/components/info";
 import Head from "next/head";
+import React from "react";
 
 const About = () => {
   return (
@@ -16,7 +17,7 @@ const About = () => {
     </>
   );
 };
-export default About;
+export default React.memo(About);
 
 // About
 // We do

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import s from "./modal.module.css";
 import { useRouter } from "next/router";
+import PropTypes from "prop-types";
 
 const Modal = ({ toggleModal }) => {
   const router = useRouter();
@@ -46,6 +47,10 @@ const Modal = ({ toggleModal }) => {
       </div>
     </div>
   );
+};
+
+Modal.propTypes = {
+  toggleModal: PropTypes.func.isRequired,
 };
 
 export default Modal;
