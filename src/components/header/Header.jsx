@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Header = ({
   isAbout = false,
@@ -12,11 +13,19 @@ const Header = ({
   isWorksCategory = false,
 }) => {
   let [modalState, setModalState] = useState(false);
+  let [height, setHeight] = useState(0);
   const router = useRouter();
   const url = router.asPath;
   const isOpen = modalState || isAbout || isWorks ? "#d12245" : "#fff";
   const isPageActive = isAbout || isWorks || isWorksCategory ? url : "/";
   const isModalOpenOnWorksCategory = isWorksCategory && !modalState;
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 100], [1, 0]);
+  const stroke = useTransform(scrollY, [0, height], ["#fff", "#d12245"]);
+
+  useEffect(() => {
+    setHeight(window.innerHeight);
+  }, []);
 
   useEffect(() => {
     modalState
@@ -30,7 +39,7 @@ const Header = ({
 
   return (
     <div data-scroll-section>
-      <header className={s.header} initial={{ opacity: 0 }}>
+      <header className={s.header}>
         <div className={s.container}>
           <div className={s.flex}>
             <button type="button" onClick={modalState ? toggleModal : null}>
@@ -47,7 +56,12 @@ const Header = ({
                     <path d="M12.0021 20.1974L27.1995 5L28.6137 6.41421L13.4163 21.6116L12.0021 20.1974Z" />
                   </svg>
                 ) : (
-                  <svg width="60" height="22" viewBox="0 0 60 22">
+                  <motion.svg
+                    width="60"
+                    height="22"
+                    viewBox="0 0 60 22"
+                    style={{ stroke }}
+                  >
                     <StyledPath
                       d="M4.8125 20.1795L18.4668 6.38222L25.3795 13.3235L36.8346 1.84033L55.0879 20.0937"
                       className={s.stroke}
@@ -55,16 +69,24 @@ const Header = ({
                       stroke={isOpen}
                     ></StyledPath>
                     <StyledPath
+                      initial={{ translateX: "-100%", opacity: 0 }}
+                      animate={{ translateX: "0%", opacity: 1 }}
+                      transition={{
+                        delay: 0.5,
+                        ease: "easeInOut",
+                      }}
                       d="M0.242188 20.0938H59.7465"
                       className={s.stroke_small}
                       stroke={isOpen}
                     ></StyledPath>
-                  </svg>
+                  </motion.svg>
                 )}
                 {!isWorks ? (
-                  <StyledText className={s.text} color={isOpen}>
-                    ALPINE
-                  </StyledText>
+                  <motion.div style={{ opacity }}>
+                    <StyledText className={s.text} color={isOpen}>
+                      ALPINE
+                    </StyledText>
+                  </motion.div>
                 ) : null}
               </Link>
             </button>
@@ -108,8 +130,8 @@ const StyledMenu = styled.rect`
   fill: ${(props) => props.fill || "inherit"};
 `;
 
-const StyledPath = styled.path`
-  stroke: ${(props) => props.stroke || "inherit"};
+const StyledPath = styled(motion.path)`
+  stroke: inherit;
   fill: ${(props) => props.fill || "transparent"};
 `;
 

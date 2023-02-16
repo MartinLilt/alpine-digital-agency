@@ -10,7 +10,7 @@ const transition = {
 
 const Portfolio = ({ options }) => {
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence>
       <motion.section
         transition={transition}
         initial="initial"
@@ -46,6 +46,7 @@ const Portfolio = ({ options }) => {
                       >
                         <Link
                           transition={transition}
+                          initial="false"
                           href={{
                             pathname: `/works/${item.tag}`,
                           }}
