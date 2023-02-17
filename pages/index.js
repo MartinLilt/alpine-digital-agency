@@ -4,7 +4,7 @@ import Hero from "../src/components/hero";
 import DATA from "../cards/cases.json";
 import React from "react";
 
-const Home = ({ cards }) => {
+const Home = ({ cards, textEnter, textLeave }) => {
   return (
     <>
       <Head>
@@ -12,8 +12,8 @@ const Home = ({ cards }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout isFooter>
-        <Hero options={cards} />
+      <Layout isHome isFooter textEnter={textEnter} textLeave={textLeave}>
+        <Hero options={cards} textEnter={textEnter} textLeave={textLeave} />
       </Layout>
     </>
   );

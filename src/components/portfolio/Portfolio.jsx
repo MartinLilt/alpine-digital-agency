@@ -1,73 +1,34 @@
 import s from "./portfolio.module.css";
-import Image from "next/image";
-import Link from "next/link";
 import PropTypes from "prop-types";
-import { motion, AnimatePresence } from "framer-motion";
+import CardTemplate from "../card";
+import { motion } from "framer-motion";
+import React from "react";
 
-const transition = {
-  duration: 120,
-};
-
-const Portfolio = ({ options }) => {
+const Portfolio = ({ options, textEnter, textLeave }) => {
   return (
-    <AnimatePresence>
-      <motion.section
-        transition={transition}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        data-scroll
-        data-scroll-section
-      >
+    <>
+      <section>
         <ul>
           <div className="container">
             <div>
-              <h2
+              <motion.h2
                 className={s.title}
-                data-scroll
-                data-scroll-class={s.title_scroll}
-                data-scroll-repeat="true"
-                data-scroll-speed="1"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 1, ease: "easeInOut" }}
               >
                 Works
-              </h2>
+              </motion.h2>
               <div className={s.container}>
                 <ul className={s.list}>
                   {options?.map((item, id) => {
                     return (
-                      <li
+                      <CardTemplate
+                        options={item}
                         key={id}
-                        className={s.img}
-                        title={item.title}
-                        data-scroll
-                        data-scroll-class={s.img_scroll}
-                        data-scroll-repeat="true"
-                        data-scroll-offset={`${45 + id}%, 25%`}
-                      >
-                        <Link
-                          transition={transition}
-                          initial="false"
-                          href={{
-                            pathname: `/works/${item.tag}`,
-                          }}
-                        >
-                          <span className={s.content}>
-                            <Image
-                              src={item.img}
-                              fill
-                              sizes="(max-width: 768px) 100vw,
-            (max-width: 1200px) 50vw,
-            33vw"
-                              alt={item.title}
-                              className={s.content_img}
-                            />
-                          </span>
-                          <span>
-                            <p className={s.name}>{item.title}</p>
-                            <p className={s.tag}>{item.category}</p>
-                          </span>
-                        </Link>
-                      </li>
+                        textEnter={textEnter}
+                        textLeave={textLeave}
+                      />
                     );
                   })}
                 </ul>
@@ -75,8 +36,8 @@ const Portfolio = ({ options }) => {
             </div>
           </div>
         </ul>
-      </motion.section>
-    </AnimatePresence>
+      </section>
+    </>
   );
 };
 
@@ -89,6 +50,8 @@ Portfolio.propTypes = {
       category: PropTypes.string.isRequired,
     })
   ).isRequired,
+  textEnter: PropTypes.func.isRequired,
+  textLeave: PropTypes.func.isRequired,
 };
 
-export default Portfolio;
+export default React.memo(Portfolio);

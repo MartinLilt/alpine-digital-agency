@@ -4,7 +4,6 @@
   font-size: 3rem;
   line-height: 1;
   color: var(--accent-color);
-  opacity: 0;
 }
 
 @media only screen and (min-width: 768px) {
@@ -34,7 +33,6 @@
 
 .content {
   margin: 0 0 5rem 0;
-  opacity: 0;
 }
 
 .mail {
@@ -52,8 +50,4 @@
 
 .padding {
   padding: 0 0 8rem 0;
-}
-
-.text_container {
-  opacity: 0;
 }

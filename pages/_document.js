@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import React from "react";
 
 class MainDocument extends Document {
   static async getInitialProps(ctx) {
@@ -19,4 +20,4 @@ class MainDocument extends Document {
   }
 }
 
-export default MainDocument;
+export default React.memo(MainDocument);

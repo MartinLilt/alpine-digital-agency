@@ -1,68 +1,64 @@
 import Header from "../header";
 import Footer from "../footer";
-import Link from "next/link";
 import s from "./layout.module.css";
 import PropTypes from "prop-types";
-import { useRef } from "react";
-import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+import React, { useRef } from "react";
 
 const Layout = ({
   children,
+  isHome,
   isFooter,
   isAbout,
   isWorks,
   isWorksCategory,
-  isFooterCategory,
+  textEnter,
+  textLeave,
 }) => {
+  // const [windowHeight, setwindowHeight] = useState(0);
   const containerRef = useRef(null);
+  // const elementRef = useRef(null);
+
+  // useEffect(() => {
+  //   const ref = elementRef.current;
+  //   if (ref) {
+  //     const rect = ref.getBoundingClientRect();
+  //     const validValue = Number(rect.height.toFixed());
+  //     setwindowHeight(validValue);
+  //   }
+  // }, []);
 
   return (
     <>
-      <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          // ... all available Locomotive Scroll instance options
-        }}
-        watch={
-          [
-            //..all the dependencies you want to watch to update the scroll.
-            //  Basicaly, you would want to watch page/location changes
-            //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
-          ]
-        }
-        containerRef={containerRef}
-      >
-        <Header
-          isAbout={isAbout}
-          isWorks={isWorks}
-          isWorksCategory={isWorksCategory}
-        />
-        <div data-scroll-container ref={containerRef}>
-          <main>{children}</main>
-          {isFooter ? <Footer /> : null}
-          {isFooterCategory ? (
-            <footer className={s.footer}>
-              <div className={`${s.flex} container`}>
-                <Link href={`/works`}>Next project_</Link>
-              </div>
-            </footer>
-          ) : null}
-        </div>
-      </LocomotiveScrollProvider>
+      <Header
+        textEnter={textEnter}
+        textLeave={textLeave}
+        isHome={isHome}
+        isAbout={isAbout}
+        isWorks={isWorks}
+        isWorksCategory={isWorksCategory}
+      />
+      <div ref={containerRef}>
+        <main>{children}</main>
+        {isFooter && <Footer textEnter={textEnter} textLeave={textLeave} />}
+      </div>
     </>
   );
 };
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  isHome: PropTypes.bool,
   isFooter: PropTypes.bool,
   isAbout: PropTypes.bool,
   isWorks: PropTypes.bool,
   isWorksCategory: PropTypes.bool,
   isFooterCategory: PropTypes.bool,
+  textEnter: PropTypes.func.isRequired,
+  textLeave: PropTypes.func.isRequired,
 };
 
 Layout.defaultProps = {
+  isHome: false,
   isFooter: false,
   isAbout: false,
   isWorks: false,
@@ -70,4 +66,4 @@ Layout.defaultProps = {
   isFooterCategory: false,
 };
 
-export default Layout;
+export default React.memo(Layout);

@@ -30,19 +30,15 @@
 }
 
 .stroke {
-  stroke: var(--accent-color);
   fill: transparent;
   stroke-width: 2;
   stroke-miterlimit: 10;
-  transition: all 0.3s;
 }
 
 .stroke_small {
-  stroke: var(--accent-color);
   fill: transparent;
   stroke-width: 2;
   stroke-miterlimit: 10;
-  transition: all 0.3s;
 }
 
 .text {
