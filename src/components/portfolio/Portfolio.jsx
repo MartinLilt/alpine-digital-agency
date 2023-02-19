@@ -2,34 +2,19 @@ import s from "./portfolio.module.css";
 import PropTypes from "prop-types";
 import CardTemplate from "../card";
 import { motion } from "framer-motion";
-import React from "react";
 
-const Portfolio = ({ options, textEnter, textLeave }) => {
+const Portfolio = ({ options }) => {
   return (
     <>
       <section>
         <ul>
           <div className="container">
             <div>
-              <motion.h2
-                className={s.title}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 1, ease: "easeInOut" }}
-              >
-                Works
-              </motion.h2>
+              <motion.h2 className={s.title}>Works</motion.h2>
               <div className={s.container}>
                 <ul className={s.list}>
                   {options?.map((item, id) => {
-                    return (
-                      <CardTemplate
-                        options={item}
-                        key={id}
-                        textEnter={textEnter}
-                        textLeave={textLeave}
-                      />
-                    );
+                    return <CardTemplate options={item} key={id} />;
                   })}
                 </ul>
               </div>
@@ -50,8 +35,6 @@ Portfolio.propTypes = {
       category: PropTypes.string.isRequired,
     })
   ).isRequired,
-  textEnter: PropTypes.func.isRequired,
-  textLeave: PropTypes.func.isRequired,
 };
 
-export default React.memo(Portfolio);
+export default Portfolio;

@@ -1,16 +1,31 @@
-import { cursorTypes } from "../../../vars";
 import s from "./nextProject.module.css";
 import React from "react";
+import { useRouter } from "next/router";
 
-const NextProject = ({ options, textEnter, textLeave }) => {
+const NextProject = () => {
+  const { query } = useRouter();
+
   return (
     <div
-      className={s.background}
-      onMouseEnter={() => textEnter(cursorTypes.whiteCursor)}
-      onMouseLeave={textLeave}
+      style={{
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        width: "100%",
+        height: "inherit",
+      }}
     >
-      <p className={s.title}>Next Project_</p>
-      <p className={s.project_title}></p>
+      <div
+        className="container"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}
+      >
+        <p className={s.title}>Next Project_</p>
+        <p className={s.project_title}></p>
+      </div>
     </div>
   );
 };

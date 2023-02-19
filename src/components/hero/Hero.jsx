@@ -2,14 +2,16 @@ import s from "./hero.module.css";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { motion, useAnimation } from "framer-motion";
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import CardTemplate from "../card";
 import { useInView } from "react-intersection-observer";
 import { cursorTypes } from "../../../vars";
+import { CursorContext } from "../cursorProvider/CursorProvider";
 
 const SPECIFIC_CARD_IDS = [1, 2, 3, 4];
 
-const Hero = ({ options, textEnter, textLeave }) => {
+const Hero = ({ options }) => {
+  const { textEnter, textLeave } = useContext(CursorContext);
   const { ref, inView } = useInView({
     threshold: 0.2,
   });
@@ -65,14 +67,7 @@ const Hero = ({ options, textEnter, textLeave }) => {
           <div className={s.container}>
             <ul className={s.list}>
               {newArray?.map((item, id) => {
-                return (
-                  <CardTemplate
-                    options={item}
-                    key={id}
-                    textEnter={textEnter}
-                    textLeave={textLeave}
-                  />
-                );
+                return <CardTemplate options={item} key={id} />;
               })}
             </ul>
             <Link
@@ -92,8 +87,6 @@ const Hero = ({ options, textEnter, textLeave }) => {
 
 Hero.propTypes = {
   options: PropTypes.array.isRequired,
-  textEnter: PropTypes.func.isRequired,
-  textLeave: PropTypes.func.isRequired,
 };
 
 export default React.memo(Hero);

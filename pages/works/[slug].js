@@ -1,15 +1,15 @@
 import Layout from "../../src/components/layout";
-import Image from "next/image";
 import styled from "styled-components";
 import DATA from "../../cards/cases.json";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { motion } from "framer-motion";
-
+import { CursorContext } from "../../src/components/cursorProvider/CursorProvider";
 import NextProject from "../../src/components/nextProject";
 import { cursorTypes } from "../../vars";
 
-const WorkCase = ({ card, textEnter, textLeave }) => {
+const WorkCase = ({ card }) => {
+  const { textEnter, textLeave } = useContext(CursorContext);
   const { img, imgs, title, desc, client, agency, link } = card;
   const options = imgs || [];
 
@@ -18,14 +18,8 @@ const WorkCase = ({ card, textEnter, textLeave }) => {
   }, []);
 
   return (
-    <>
-      <Layout
-        isWorks
-        isWorksCategory
-        isFooterCategory
-        textEnter={textEnter}
-        textLeave={textLeave}
-      >
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <Layout isWorks isWorksCategory isFooterCategory>
         <section>
           <div
             style={{
@@ -72,26 +66,30 @@ const WorkCase = ({ card, textEnter, textLeave }) => {
                     style={{
                       backgroundImage: `url(${item.img})`,
                       backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      width: "100%",
-                      aspectRatio: "16/9",
+                      backgroundSize: "contain",
+                      maxWidth: "100%",
+                      minHeight: "37.5vh",
                     }}
                   ></StyledImage>
                 );
               })}
             </ul>
-            <NextProject textEnter={textEnter} textLeave={textLeave} />
           </div>
+          <StyledNextProjectBackground
+            onMouseEnter={() => textEnter(cursorTypes.whiteCursor)}
+            onMouseLeave={textLeave}
+          >
+            <NextProject />
+          </StyledNextProjectBackground>
         </section>
       </Layout>
-    </>
+    </motion.div>
   );
 };
 
 export const getStaticPaths = async () => {
   const cards = DATA;
-  const paths = cards.map((c) => ({ params: { slug: c.tag } }));
+  const paths = cards.map((c) => ({ params: { id: c.id, slug: c.tag } }));
 
   return { paths, fallback: "blocking" };
 };
@@ -109,9 +107,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 const StyledImage = styled.li`
-  &:not(:last-child) {
-    margin: 0 0 3rem 0;
-  }
+  margin: 0 0 6rem 0;
 `;
 
 const StyledTitle = styled(motion.h2)`
@@ -145,6 +141,13 @@ const StyledContent = styled.ul`
       line-height: 2rem;
     }
   }
+`;
+
+const StyledNextProjectBackground = styled.div`
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
 `;
 
 WorkCase.propTypes = {

@@ -1,11 +1,13 @@
 import { cursorTypes } from "../../../vars";
 import s from "./footer.module.css";
 import React from "react";
-import PropTypes from "prop-types";
+import { CursorContext } from "../cursorProvider/CursorProvider";
+import { useContext } from "react";
 
-const Footer = ({ textEnter, textLeave }) => {
+const Footer = () => {
+  const { textEnter, textLeave } = useContext(CursorContext);
   return (
-    <footer className="container" data-scroll-section>
+    <footer className="container" scroll-content="true">
       <div className={s.footer}>
         <div>
           <p className={s.title}>Select clients_</p>
@@ -28,11 +30,6 @@ const Footer = ({ textEnter, textLeave }) => {
       </div>
     </footer>
   );
-};
-
-Footer.propTypes = {
-  textEnter: PropTypes.func.isRequired,
-  textLeave: PropTypes.func.isRequired,
 };
 
 export default React.memo(Footer);

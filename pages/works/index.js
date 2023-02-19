@@ -5,19 +5,15 @@ import DATA from "../../cards/cases.json";
 import PropTypes from "prop-types";
 import React from "react";
 
-const Works = ({ cards, textEnter, textLeave }) => {
+const Works = ({ cards }) => {
   return (
     <>
       <Head>
         <title>Works - Alpine Design</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout isFooter isWorks textEnter={textEnter} textLeave={textLeave}>
-        <Portfolio
-          options={cards}
-          textEnter={textEnter}
-          textLeave={textLeave}
-        />
+      <Layout isFooter isWorks>
+        <Portfolio options={cards} />
       </Layout>
     </>
   );

@@ -3,15 +3,15 @@ import Info from "../../src/components/info";
 import Head from "next/head";
 import React from "react";
 
-const About = ({ textEnter, textLeave }) => {
+const About = () => {
   return (
     <>
       <Head>
         <title>About - Alpine Design</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout isAbout textEnter={textEnter} textLeave={textLeave}>
-        <Info textEnter={textEnter} textLeave={textLeave} />
+      <Layout isAbout>
+        <Info />
       </Layout>
       ;
     </>

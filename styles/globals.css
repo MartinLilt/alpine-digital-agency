@@ -26,6 +26,15 @@ body {
   overflow-x: hidden;
 }
 
+.smooth-scroll-wrapper {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
   cursor: none;
@@ -209,6 +218,8 @@ html.has-scroll-dragging {
 
 .cursor {
   z-index: 99999;
+  background-position: center !important;
+  background-size: 35% !important;
   border: solid 1px #fff;
   pointer-events: none;
   height: 16px;

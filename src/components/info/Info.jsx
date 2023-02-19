@@ -3,9 +3,11 @@ import options from "../../../cards/about.json";
 import { motion } from "framer-motion";
 import { cursorTypes } from "../../../vars";
 import React from "react";
-import PropTypes from "prop-types";
+import { useContext } from "react";
+import { CursorContext } from "../cursorProvider/CursorProvider";
 
-const Info = ({ textEnter, textLeave }) => {
+const Info = () => {
+  const { textEnter, textLeave } = useContext(CursorContext);
   return (
     <>
       <section>
@@ -54,11 +56,6 @@ const Info = ({ textEnter, textLeave }) => {
       </section>
     </>
   );
-};
-
-Info.propTypes = {
-  textEnter: PropTypes.func.isRequired,
-  textLeave: PropTypes.func.isRequired,
 };
 
 export default React.memo(Info);

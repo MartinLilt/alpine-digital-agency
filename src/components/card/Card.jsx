@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useContext } from "react";
+import { CursorContext } from "../cursorProvider/CursorProvider";
 import { cursorTypes } from "../../../vars";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -6,17 +7,22 @@ import Link from "next/link";
 import s from "./card.module.css";
 import PropTypes from "prop-types";
 
-const Card = ({ options, textEnter, textLeave }) => {
+const Card = ({ options }) => {
+  const currentCardRef = useRef(null);
+  const { textEnter, textLeave } = useContext(CursorContext);
   const { title, tag, img, category } = options;
   const { ref, inView } = useInView({
-    threshold: 0.7,
+    threshold: 0.2,
   });
   const animation = useAnimation();
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (inView) {
       animation.start({
-        y: "0",
+        y: "-5rem",
+
         opacity: "60%",
         transition: {
           type: "spring",
@@ -26,21 +32,32 @@ const Card = ({ options, textEnter, textLeave }) => {
     }
     if (!inView) {
       animation.start({
-        y: "100px",
         opacity: "0%",
+        y: "0",
       });
     }
   }, [inView]);
 
+  const handleClick = () => {};
+
   return (
     <motion.li
+      onClick={handleClick}
+      initial={false}
       animate={animation}
+      exit={{
+        scale: "265%",
+        translateX: "20%",
+        translateY: "0%",
+        zIndex: "99999",
+      }}
       ref={ref}
       className={s.list}
       onMouseEnter={() => textEnter(cursorTypes.backgroundCursor)}
       onMouseLeave={textLeave}
     >
       <Link
+        ref={currentCardRef}
         className={s.link}
         href={`/works/${tag}`}
         style={{
@@ -66,8 +83,6 @@ Card.propTypes = {
     img: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
   }).isRequired,
-  textEnter: PropTypes.func.isRequired,
-  textLeave: PropTypes.func.isRequired,
 };
 
 export default React.memo(Card);

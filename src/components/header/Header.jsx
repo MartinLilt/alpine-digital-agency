@@ -3,40 +3,37 @@ import s from "./header.module.css";
 import Link from "next/link";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cursorTypes } from "../../../vars";
+import { CursorContext } from "../cursorProvider/CursorProvider";
 
 const Header = ({
   isHome = false,
   isAbout = false,
   isWorks = false,
   isWorksCategory = false,
-  textEnter,
-  textLeave,
 }) => {
   let [modalState, setModalState] = useState(false);
   let [height, setHeight] = useState(0);
+  let [iconsVariamt, setIconsVariamt] = useState("#fff");
   const router = useRouter();
   const url = router.asPath;
-  const isOpen = modalState || isAbout || isWorks ? "#d12245" : "#fff";
   const isPageActive = isAbout || isWorks || isWorksCategory ? url : "/";
   const isModalOpenOnWorksCategory = isWorksCategory && !modalState;
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 100], ["100%", "0%"]);
-  const stroke = useTransform(scrollY, [0, height], ["#fff", "#d12245"]);
+  const stroke = useTransform(scrollY, [0, height], [iconsVariamt, "#d12245"]);
+  const { textEnter, textLeave } = useContext(CursorContext);
 
-  const isLogoAnimation = useCallback(
-    (obj) => {
-      if (isHome && !modalState) {
-        return stroke;
-      } else {
-        return "inherit";
-      }
-    },
-    [modalState]
-  );
+  useEffect(() => {
+    if (modalState || isWorks || isAbout || isWorksCategory) {
+      setIconsVariamt("#d12245");
+    } else {
+      setIconsVariamt("#fff");
+    }
+  }, [modalState]);
 
   useEffect(() => {
     setHeight(window.innerHeight);
@@ -53,8 +50,8 @@ const Header = ({
   };
 
   return (
-    <div>
-      <header className={s.header}>
+    <>
+      <header className={s.header} scroll-content="true">
         <div className={s.container}>
           <div className={s.flex}>
             <button
@@ -69,11 +66,7 @@ const Header = ({
               }
               onMouseLeave={textLeave}
             >
-              <Link
-                href={isWorksCategory ? "/works" : "/"}
-                className={s.logo}
-                style={{ color: isOpen, stroke: isOpen }}
-              >
+              <Link href={isWorksCategory ? "/works" : "/"} className={s.logo}>
                 {isModalOpenOnWorksCategory ? (
                   <svg
                     width="40"
@@ -81,9 +74,6 @@ const Header = ({
                     viewBox="0 0 40 40"
                     className={s.arrow}
                     xmlns="http://www.w3.org/2000/svg"
-                    style={{
-                      stroke: "inherit",
-                    }}
                   >
                     <path d="M13.4142 18.7842L28.1985 33.5685L26.7843 34.9827L12 20.1984L13.4142 18.7842Z" />
                     <path d="M12.0021 20.1974L27.1995 5L28.6137 6.41421L13.4163 21.6116L12.0021 20.1974Z" />
@@ -93,7 +83,7 @@ const Header = ({
                     width="60"
                     height="22"
                     viewBox="0 0 60 22"
-                    style={{ stroke: isLogoAnimation() }}
+                    style={{ stroke, color: stroke }}
                   >
                     <StyledPath
                       d="M4.8125 20.1795L18.4668 6.38222L25.3795 13.3235L36.8346 1.84033L55.0879 20.0937"
@@ -126,7 +116,7 @@ const Header = ({
                       ease: "easeInOut",
                     }}
                     className={s.text}
-                    style={{ opacity, color: "inherit" }}
+                    style={{ opacity, color: stroke }}
                   >
                     ALPINE
                   </StyledText>
@@ -147,12 +137,12 @@ const Header = ({
               onMouseLeave={textLeave}
             >
               <motion.svg
+                style={{ fill: stroke }}
                 width="40"
                 height="40"
                 viewBox="0 0 40 40"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                style={{ fill: isLogoAnimation() }}
               >
                 <StyledMenu
                   className={s.rect}
@@ -175,14 +165,8 @@ const Header = ({
           </div>
         </div>
       </header>
-      {modalState ? (
-        <Modal
-          toggleModal={toggleModal}
-          textEnter={textEnter}
-          textLeave={textLeave}
-        />
-      ) : null}
-    </div>
+      {modalState ? <Modal toggleModal={toggleModal} /> : null}
+    </>
   );
 };
 
@@ -200,8 +184,6 @@ Header.propTypes = {
   isAbout: PropTypes.bool,
   isWorks: PropTypes.bool,
   isWorksCategory: PropTypes.bool,
-  textEnter: PropTypes.func.isRequired,
-  textLeave: PropTypes.func.isRequired,
 };
 
 export default React.memo(Header);

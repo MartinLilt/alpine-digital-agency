@@ -4,8 +4,11 @@ import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import { cursorTypes } from "../../../vars";
 import React from "react";
+import { useContext } from "react";
+import { CursorContext } from "../cursorProvider/CursorProvider";
 
-const Modal = ({ toggleModal, textEnter, textLeave }) => {
+const Modal = ({ toggleModal }) => {
+  const { textEnter, textLeave } = useContext(CursorContext);
   const router = useRouter();
   const isPageUrl = router.pathname;
   const pageUrlAbout = "/about";
@@ -64,8 +67,6 @@ const Modal = ({ toggleModal, textEnter, textLeave }) => {
 
 Modal.propTypes = {
   toggleModal: PropTypes.func.isRequired,
-  textEnter: PropTypes.func.isRequired,
-  textLeave: PropTypes.func.isRequired,
 };
 
 export default React.memo(Modal);
