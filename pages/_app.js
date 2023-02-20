@@ -13,7 +13,7 @@ const myFont = localFont({
 const App = ({ Component, pageProps }) => {
   return (
     <CursorProvider>
-      <AnimatePresence initial={false} mode={"wait"}>
+      <AnimatePresence mode="wait">
         <div className={myFont.className}>
           <Component {...pageProps} />
         </div>

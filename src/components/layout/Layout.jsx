@@ -13,7 +13,7 @@ const Layout = ({
   isWorksCategory,
 }) => {
   const scrollWrapRef = useRef(null);
-  const speed = 0.04;
+  const speed = 0.08;
   let offset = 0;
   let callScroll;
 

@@ -15,7 +15,7 @@
 @media only screen and (min-width: 768px) {
   .list {
     height: 30rem;
-    width: 49%;
+    width: 48%;
   }
 
   .list:nth-child(even) {
@@ -26,7 +26,6 @@
 @media only screen and (min-width: 1280px) {
   .list {
     height: 36rem;
-    width: 49%;
   }
 
   .list:nth-child(even) {
@@ -37,7 +36,6 @@
 @media only screen and (min-width: 1536px) {
   .list {
     height: 42rem;
-    width: 49%;
   }
 
   .list:nth-child(even) {

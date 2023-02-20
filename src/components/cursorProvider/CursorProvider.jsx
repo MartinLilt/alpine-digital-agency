@@ -46,7 +46,7 @@ const CursorProvider = ({ children }) => {
       background: "#ffffff00",
       border: "1px solid #fff",
 
-      transition: { duration: 0.15, ease: [0.17, 0.67, 0.83, 0.67] },
+      transition: { duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] },
     },
     whiteCursor: {
       width: "48px",
@@ -56,7 +56,7 @@ const CursorProvider = ({ children }) => {
       border: "2px solid #fff",
       background: "#ffffff00",
 
-      transition: { duration: 0.15, ease: [0.17, 0.67, 0.83, 0.67] },
+      transition: { duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] },
     },
     accentCursor: {
       width: "48px",
@@ -66,7 +66,7 @@ const CursorProvider = ({ children }) => {
       border: "2px solid #d12245",
       background: "#ffffff00",
 
-      transition: { duration: 0.15, ease: [0.17, 0.67, 0.83, 0.67] },
+      transition: { duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] },
     },
     backgroundCursor: {
       width: "96px",
@@ -78,9 +78,10 @@ const CursorProvider = ({ children }) => {
       backgroundImage: "url(/cursor.svg)",
       backgroundRepeat: "no-repeat",
 
-      transition: { duration: 0.15, ease: [0.17, 0.67, 0.83, 0.67] },
+      transition: { duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] },
     },
   };
+
   return (
     <CursorContext.Provider value={{ textEnter, textLeave }}>
       {children}

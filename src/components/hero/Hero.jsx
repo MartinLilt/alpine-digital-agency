@@ -2,7 +2,7 @@ import s from "./hero.module.css";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { motion, useAnimation } from "framer-motion";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import CardTemplate from "../card";
 import { useInView } from "react-intersection-observer";
 import { cursorTypes } from "../../../vars";
