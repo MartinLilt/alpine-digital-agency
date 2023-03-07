@@ -1,9 +1,9 @@
 import s from "./portfolio.module.css";
 import PropTypes from "prop-types";
-import CardTemplate from "../card";
 import { motion } from "framer-motion";
+import CardTemplate from "../card";
 
-const Portfolio = ({ options }) => {
+export default function Portfolio({ options }) {
   return (
     <>
       <section>
@@ -12,11 +12,7 @@ const Portfolio = ({ options }) => {
             <div>
               <motion.h2 className={s.title}>Works</motion.h2>
               <div className={s.container}>
-                <ul className={s.list}>
-                  {options?.map((item, id) => {
-                    return <CardTemplate options={item} key={id} />;
-                  })}
-                </ul>
+                <CardTemplate options={options} />
               </div>
             </div>
           </div>
@@ -24,7 +20,7 @@ const Portfolio = ({ options }) => {
       </section>
     </>
   );
-};
+}
 
 Portfolio.propTypes = {
   options: PropTypes.arrayOf(
@@ -36,5 +32,3 @@ Portfolio.propTypes = {
     })
   ).isRequired,
 };
-
-export default Portfolio;

@@ -1,13 +1,19 @@
 import { cursorTypes } from "../../../vars";
 import s from "./footer.module.css";
 import React from "react";
-import { CursorContext } from "../cursorProvider/CursorProvider";
+import { CursorContext } from "../../../context/cursorContext";
 import { useContext } from "react";
 
-const Footer = () => {
-  const { textEnter, textLeave } = useContext(CursorContext);
+export default function Footer() {
+  const [cursorVariant, setCursorVariant] = useContext(CursorContext);
   return (
-    <footer className="container" scroll-content="true">
+    <footer
+      className="container animation-default-init"
+      data-scroll-repeat="true"
+      data-scroll
+      data-scroll-offset="25%, 25%"
+      data-scroll-class="animation-default-start"
+    >
       <div className={s.footer}>
         <div>
           <p className={s.title}>Select clients_</p>
@@ -18,8 +24,8 @@ const Footer = () => {
         <div>
           <p>Get in touch_</p>
           <a
-            onMouseEnter={() => textEnter(cursorTypes.accentCursor)}
-            onMouseLeave={textLeave}
+            onMouseEnter={() => setCursorVariant(cursorTypes.accentCursor)}
+            onMouseLeave={() => setCursorVariant(cursorTypes.default)}
             className={`${s.mail} hover`}
             href="mailto:studio@alpineldn.com?subject = Feedback&body = Message"
           >
@@ -30,6 +36,4 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default React.memo(Footer);
+}

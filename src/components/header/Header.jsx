@@ -6,38 +6,27 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { cursorTypes } from "../../../vars";
-import { CursorContext } from "../cursorProvider/CursorProvider";
+import { cursorTypes, headerMap } from "../../../vars";
+import { CursorContext } from "../../../context/cursorContext";
+import { toggleRouterState } from "../../../helpers/toggleRouterState";
 
-const Header = ({
-  isHome = false,
-  isAbout = false,
-  isWorks = false,
-  isWorksCategory = false,
-}) => {
+export default function Header() {
   let [modalState, setModalState] = useState(false);
-  let [height, setHeight] = useState(0);
-  let [iconsVariamt, setIconsVariamt] = useState("#fff");
+  let [headerState, setHeaderState] = useState(headerMap.home);
   const router = useRouter();
-  const url = router.asPath;
-  const isPageActive = isAbout || isWorks || isWorksCategory ? url : "/";
-  const isModalOpenOnWorksCategory = isWorksCategory && !modalState;
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 100], ["100%", "0%"]);
-  const stroke = useTransform(scrollY, [0, height], [iconsVariamt, "#d12245"]);
-  const { textEnter, textLeave } = useContext(CursorContext);
+  const [cursorVariant, setCursorVariant] = useContext(CursorContext);
+  const isHomePage =
+    router.asPath === "/" && !modalState
+      ? "var(--main-color)"
+      : "var(--accent-color)";
+
+  console.log(headerState);
 
   useEffect(() => {
-    if (modalState || isWorks || isAbout || isWorksCategory) {
-      setIconsVariamt("#d12245");
-    } else {
-      setIconsVariamt("#fff");
-    }
-  }, [modalState]);
-
-  useEffect(() => {
-    setHeight(window.innerHeight);
-  }, []);
+    setHeaderState(toggleRouterState(router.asPath, modalState));
+  }, [router.asPath, modalState]);
 
   useEffect(() => {
     modalState
@@ -57,17 +46,19 @@ const Header = ({
             <button
               type="button"
               onClick={modalState ? toggleModal : null}
-              onMouseEnter={() =>
-                textEnter(
-                  modalState || isWorks || isAbout
-                    ? cursorTypes.accentCursor
-                    : cursorTypes.whiteCursor
-                )
-              }
-              onMouseLeave={textLeave}
+              onMouseEnter={() => setCursorVariant(headerState.cursor)}
+              onMouseLeave={() => setCursorVariant(cursorTypes.default)}
             >
-              <Link href={isWorksCategory ? "/works" : "/"} className={s.logo}>
-                {isModalOpenOnWorksCategory ? (
+              <Link
+                color={isHomePage}
+                href={headerState.logoPath}
+                className={s.logo}
+                style={{
+                  stroke: headerState.color,
+                  color: headerState.color,
+                }}
+              >
+                {!headerState.logoIcon ? (
                   <svg
                     width="40"
                     height="40"
@@ -79,12 +70,7 @@ const Header = ({
                     <path d="M12.0021 20.1974L27.1995 5L28.6137 6.41421L13.4163 21.6116L12.0021 20.1974Z" />
                   </svg>
                 ) : (
-                  <motion.svg
-                    width="60"
-                    height="22"
-                    viewBox="0 0 60 22"
-                    style={{ stroke, color: stroke }}
-                  >
+                  <motion.svg width="60" height="22" viewBox="0 0 60 22">
                     <StyledPath
                       d="M4.8125 20.1795L18.4668 6.38222L25.3795 13.3235L36.8346 1.84033L55.0879 20.0937"
                       className={s.stroke}
@@ -107,7 +93,7 @@ const Header = ({
                     ></StyledPath>
                   </motion.svg>
                 )}
-                {isHome && !modalState && (
+                {headerState.logoText && (
                   <StyledText
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -116,7 +102,7 @@ const Header = ({
                       ease: "easeInOut",
                     }}
                     className={s.text}
-                    style={{ opacity, color: stroke }}
+                    style={{ color: "inherit" }}
                   >
                     ALPINE
                   </StyledText>
@@ -124,20 +110,15 @@ const Header = ({
               </Link>
             </button>
             <Link
-              href={isPageActive}
+              style={{ fill: headerState.color }}
+              href={headerState.menuPath}
               className={s.menu}
               onClick={toggleModal}
-              onMouseEnter={() =>
-                textEnter(
-                  modalState || isWorks || isAbout
-                    ? cursorTypes.accentCursor
-                    : cursorTypes.whiteCursor
-                )
-              }
-              onMouseLeave={textLeave}
+              onMouseEnter={() => setCursorVariant(headerState.cursor)}
+              onMouseLeave={() => setCursorVariant(cursorTypes.default)}
             >
               <motion.svg
-                style={{ fill: stroke }}
+                style={{ fill: "inherit" }}
                 width="40"
                 height="40"
                 viewBox="0 0 40 40"
@@ -168,7 +149,7 @@ const Header = ({
       {modalState ? <Modal toggleModal={toggleModal} /> : null}
     </>
   );
-};
+}
 
 const StyledMenu = styled.rect`
   fill: ${(props) => props.fill || "inherit"};
@@ -185,5 +166,3 @@ Header.propTypes = {
   isWorks: PropTypes.bool,
   isWorksCategory: PropTypes.bool,
 };
-
-export default React.memo(Header);

@@ -1,13 +1,12 @@
 import s from "./info.module.css";
-import options from "../../../cards/about.json";
 import { motion } from "framer-motion";
 import { cursorTypes } from "../../../vars";
-import React from "react";
 import { useContext } from "react";
-import { CursorContext } from "../cursorProvider/CursorProvider";
+import { CursorContext } from "../../../context/cursorContext";
 
-const Info = () => {
-  const { textEnter, textLeave } = useContext(CursorContext);
+export default function Info({ options }) {
+  const [cursorVariant, setCursorVariant] = useContext(CursorContext);
+
   return (
     <>
       <section>
@@ -26,7 +25,7 @@ const Info = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1, ease: "easeInOut" }}
             >
-              {options.map(({ title, description }, id) => {
+              {options?.map(({ title, description }, id) => {
                 return (
                   <li key={id} className={s.content}>
                     <h2 className={s.sup_title}>{title}</h2>
@@ -43,8 +42,8 @@ const Info = () => {
             >
               <p className={s.text}>Get in touch_</p>
               <a
-                onMouseEnter={() => textEnter(cursorTypes.accentCursor)}
-                onMouseLeave={textLeave}
+                onMouseEnter={() => setCursorVariant(cursorTypes.accentCursor)}
+                onMouseLeave={() => setCursorVariant(cursorTypes.default)}
                 className={`${s.mail} hover`}
                 href="mailto:studio@alpineldn.com?subject = Feedback&body = Message"
               >
@@ -56,6 +55,4 @@ const Info = () => {
       </section>
     </>
   );
-};
-
-export default React.memo(Info);
+}

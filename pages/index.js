@@ -1,10 +1,9 @@
 import Head from "next/head";
 import Layout from "../src/components/layout";
 import Hero from "../src/components/hero";
-import DATA from "../cards/cases.json";
 import React from "react";
 
-const Home = ({ cards }) => {
+export default function Home({ cards }) {
   return (
     <>
       <Head>
@@ -12,17 +11,18 @@ const Home = ({ cards }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout isHome isFooter>
-        <Hero options={cards} />
-      </Layout>
+      <div data-scroll-section>
+        <Layout isHome isFooter>
+          <Hero options={cards} />
+        </Layout>
+      </div>
     </>
   );
-};
-
-export default React.memo(Home);
+}
 
 export async function getStaticProps() {
-  const cards = DATA;
+  const res = await fetch(`http://${process.env.NEXT_PUBLIC_API}/api`);
+  const cards = await res.json();
   return {
     props: {
       cards,

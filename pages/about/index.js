@@ -3,33 +3,30 @@ import Info from "../../src/components/info";
 import Head from "next/head";
 import React from "react";
 
-const About = () => {
+export default function About({ content }) {
   return (
     <>
       <Head>
         <title>About - Alpine Design</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout isAbout>
-        <Info />
-      </Layout>
+      <div data-scroll-section>
+        <Layout isAbout>
+          <Info options={content} />
+        </Layout>
+      </div>
       ;
     </>
   );
-};
-export default React.memo(About);
+}
 
-// About
-// We do
-// Brand Identity, Design Systems, Creative, Artwork, User Experience, User Interface, Websites, Applications
-
-// For people like
-// HSBC, Feefo, ASOS, Matter, HTC, Havas, Turkish Airlines, Schweppes
-
-// How we do it
-// Value through quality. Lean & Agile.
-
-// Less of the agency, more results.
-
-// Get in touch
-// studio@alpineldn.com
+export async function getStaticProps() {
+  const res = await fetch(`http://${process.env.NEXT_PUBLIC_API}/api/about`);
+  const content = await res.json();
+  return {
+    props: {
+      content,
+    }, // will be passed to the page component as props
+    revalidate: 10,
+  };
+}

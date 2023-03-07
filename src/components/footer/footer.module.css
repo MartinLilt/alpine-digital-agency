@@ -50,3 +50,7 @@
     line-height: 2rem;
   }
 }
+
+.data_footer {
+  background-color: red;
+}

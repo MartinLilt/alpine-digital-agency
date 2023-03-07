@@ -1,25 +1,32 @@
 import Layout from "../../src/components/layout";
 import styled from "styled-components";
-import DATA from "../../cards/cases.json";
 import PropTypes from "prop-types";
 import React, { useEffect, useContext } from "react";
 import { motion } from "framer-motion";
-import { CursorContext } from "../../src/components/cursorProvider/CursorProvider";
+import { CursorContext } from "../../context/cursorContext";
+import { ImageContext } from "../../context/imageContext";
 import NextProject from "../../src/components/nextProject";
 import { cursorTypes } from "../../vars";
 
-const WorkCase = ({ card }) => {
-  const { textEnter, textLeave } = useContext(CursorContext);
-  const { img, imgs, title, desc, client, agency, link } = card;
+export default function WorkCase({ card }) {
+  const [cursorVariant, setCursorVariant] = useContext(CursorContext);
+  const [animateImage, setAnimateImage] = useContext(ImageContext);
+  const { img, imgs, title, desc, client, agency, link, tag } = card;
   const options = imgs || [];
 
   useEffect(() => {
-    textEnter("default");
+    if (animateImage !== "") setAnimateImage("");
+    if (cursorVariant !== cursorTypes.default)
+      setCursorVariant(cursorTypes.default);
   }, []);
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <Layout isWorks isWorksCategory isFooterCategory>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      data-scroll-section
+    >
+      <Layout>
         <section>
           <div
             style={{
@@ -49,8 +56,8 @@ const WorkCase = ({ card }) => {
               {link && (
                 <li
                   className="hover"
-                  onMouseEnter={() => textEnter(cursorTypes.whiteCursor)}
-                  onMouseLeave={textLeave}
+                  onMouseEnter={() => setCursorVariant(cursorTypes.whiteCursor)}
+                  onMouseLeave={() => setCursorVariant(cursorTypes.default)}
                 >
                   <a href={link} target="_blank" rel="noopener noreferrer">
                     {link}
@@ -66,7 +73,7 @@ const WorkCase = ({ card }) => {
                     style={{
                       backgroundImage: `url(${item.img})`,
                       backgroundRepeat: "no-repeat",
-                      backgroundSize: "contain",
+                      backgroundSize: "cover",
                       maxWidth: "100%",
                       minHeight: "37.5vh",
                     }}
@@ -76,26 +83,28 @@ const WorkCase = ({ card }) => {
             </ul>
           </div>
           <StyledNextProjectBackground
-            onMouseEnter={() => textEnter(cursorTypes.whiteCursor)}
-            onMouseLeave={textLeave}
+            onMouseEnter={() => setCursorVariant(cursorTypes.whiteCursor)}
+            onMouseLeave={() => setCursorVariant(cursorTypes.default)}
           >
-            <NextProject />
+            <NextProject currentTagName={tag} />
           </StyledNextProjectBackground>
         </section>
       </Layout>
     </motion.div>
   );
-};
+}
 
 export const getStaticPaths = async () => {
-  const cards = DATA;
-  const paths = cards.map((c) => ({ params: { id: c.id, slug: c.tag } }));
+  const res = await fetch(`http://${process.env.NEXT_PUBLIC_API}/api`);
+  const cards = await res.json();
+  const paths = cards.map((card) => ({ params: { slug: card.tag } }));
 
   return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps = async ({ params }) => {
-  const cards = DATA;
+  const res = await fetch(`http://${process.env.NEXT_PUBLIC_API}/api`);
+  const cards = await res.json();
   const card = cards.find((el) => el.tag === params.slug);
 
   return {
@@ -166,5 +175,3 @@ WorkCase.propTypes = {
     link: PropTypes.string,
   }).isRequired,
 };
-
-export default React.memo(WorkCase);

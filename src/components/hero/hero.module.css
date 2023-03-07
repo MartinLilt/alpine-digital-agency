@@ -53,20 +53,6 @@
   background: linear-gradient(180deg, rgba(34, 34, 34, 0), #222);
 }
 
-.list {
-  margin: 0 0 4rem 0;
-  display: flex;
-  flex-direction: column;
-}
-
-@media only screen and (min-width: 768px) {
-  .list {
-    flex-direction: unset;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-}
-
 .brand_title {
   font-size: 2.25rem;
   line-height: 2.5rem;

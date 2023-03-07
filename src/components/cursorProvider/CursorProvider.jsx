@@ -1,97 +1,104 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { cursorTypes } from "../../../vars";
+import { CursorContext } from "../../../context/cursorContext";
+import gsap from "gsap";
+import styled from "styled-components";
 
-export const CursorContext = React.createContext();
-
-const CursorProvider = ({ children }) => {
-  const [cursorVariant, setCursorVariant] = useState("default");
-  const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0,
-  });
+export default function CursorProvider({ children }) {
+  const cursor = useRef(null);
+  let [cursorVariant, setCursorVariant] = useState(cursorTypes.default);
 
   useEffect(() => {
+    gsap.set(cursor.current, { xPercent: -50, yPercent: -50 });
+
+    const ball = cursor.current;
+    const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const mouse = { x: pos.x, y: pos.y };
+    const speed = 0.2;
+
+    const xSet = gsap.quickSetter(ball, "x", "px");
+    const ySet = gsap.quickSetter(ball, "y", "px");
+
     const mouseMove = (e) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      });
+      mouse.x = e.x;
+      mouse.y = e.y;
     };
 
     window.addEventListener("mousemove", mouseMove);
+
+    gsap.ticker.add(() => {
+      // adjust speed for higher refresh monitors
+      const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+
+      pos.x += (mouse.x - pos.x) * dt;
+      pos.y += (mouse.y - pos.y) * dt;
+      xSet(pos.x);
+      ySet(pos.y);
+    });
+
     return () => window.removeEventListener("mousemove", mouseMove);
   }, []);
 
-  const textEnter = (type) => {
-    if (
-      type === cursorTypes.accentCursor ||
-      type === cursorTypes.whiteCursor ||
-      type === cursorTypes.backgroundCursor
-    ) {
-      setCursorVariant(type);
-    } else {
-      setCursorVariant("default");
-    }
-  };
-
-  const textLeave = () => {
-    setCursorVariant("default");
-  };
-
   const variants = {
     default: {
-      x: mousePosition.x - 8,
-      y: mousePosition.y - 8,
+      width: "24px",
+      height: "24px",
       background: "#ffffff00",
       border: "1px solid #fff",
-
-      transition: { duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: "color 0.3s ease",
     },
     whiteCursor: {
       width: "48px",
       height: "48px",
-      x: mousePosition.x - 24,
-      y: mousePosition.y - 24,
       border: "2px solid #fff",
       background: "#ffffff00",
-
-      transition: { duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: "color 0.3s ease",
     },
     accentCursor: {
       width: "48px",
       height: "48px",
-      x: mousePosition.x - 24,
-      y: mousePosition.y - 24,
       border: "2px solid #d12245",
       background: "#ffffff00",
-
-      transition: { duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: "color 0.3s ease",
     },
     backgroundCursor: {
       width: "96px",
       height: "96px",
-      x: mousePosition.x - 48,
-      y: mousePosition.y - 48,
       border: "2px solid #ffffff00",
       background: "#d12245",
       backgroundImage: "url(/cursor.svg)",
       backgroundRepeat: "no-repeat",
-
-      transition: { duration: 0.15, ease: [0.25, 0.46, 0.45, 0.94] },
+      transition: "color 0.3s ease",
     },
   };
 
   return (
-    <CursorContext.Provider value={{ textEnter, textLeave }}>
+    <CursorContext.Provider value={[cursorVariant, setCursorVariant]}>
       {children}
-      <motion.div
+      <StyledCursor
+        ref={cursor}
         animate={cursorVariant}
         variants={variants}
-        className="cursor"
-      ></motion.div>
+      ></StyledCursor>
     </CursorContext.Provider>
   );
-};
+}
 
-export default React.memo(CursorProvider);
+const StyledCursor = styled(motion.div)`
+  display: none;
+  background-position: center !important;
+  background-size: 35% !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+
+  @media only screen and (min-width: 768px) {
+    & {
+      display: block;
+    }
+  }
+`;

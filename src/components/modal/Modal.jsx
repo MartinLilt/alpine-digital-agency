@@ -5,10 +5,10 @@ import PropTypes from "prop-types";
 import { cursorTypes } from "../../../vars";
 import React from "react";
 import { useContext } from "react";
-import { CursorContext } from "../cursorProvider/CursorProvider";
+import { CursorContext } from "../../../context/cursorContext";
 
-const Modal = ({ toggleModal }) => {
-  const { textEnter, textLeave } = useContext(CursorContext);
+export default function Modal({ toggleModal }) {
+  const [cursorVariant, setCursorVariant] = useContext(CursorContext);
   const router = useRouter();
   const isPageUrl = router.pathname;
   const pageUrlAbout = "/about";
@@ -20,8 +20,8 @@ const Modal = ({ toggleModal }) => {
           <ul className={s.list}>
             <li className={s.page_link}>
               <Link
-                onMouseEnter={() => textEnter(cursorTypes.accentCursor)}
-                onMouseLeave={textLeave}
+                onMouseEnter={() => setCursorVariant(cursorTypes.accentCursor)}
+                onMouseLeave={() => setCursorVariant(cursorTypes.default)}
                 href={pageUrlAbout}
                 className="hover"
                 onClick={isPageUrl !== pageUrlAbout ? null : toggleModal}
@@ -31,8 +31,8 @@ const Modal = ({ toggleModal }) => {
             </li>
             <li className={s.page_link}>
               <Link
-                onMouseEnter={() => textEnter(cursorTypes.accentCursor)}
-                onMouseLeave={textLeave}
+                onMouseEnter={() => setCursorVariant(cursorTypes.accentCursor)}
+                onMouseLeave={() => setCursorVariant(cursorTypes.default)}
                 href={pageUrlWorks}
                 className="hover"
                 onClick={isPageUrl !== pageUrlWorks ? null : toggleModal}
@@ -43,8 +43,8 @@ const Modal = ({ toggleModal }) => {
           </ul>
           <div className={s.flex_link}>
             <a
-              onMouseEnter={() => textEnter(cursorTypes.accentCursor)}
-              onMouseLeave={textLeave}
+              onMouseEnter={() => setCursorVariant(cursorTypes.accentCursor)}
+              onMouseLeave={() => setCursorVariant(cursorTypes.default)}
               className={`${s.link} hover`}
               href="mailto:studio@alpineldn.com?subject = Feedback&body = Message"
             >
@@ -53,8 +53,8 @@ const Modal = ({ toggleModal }) => {
             <Link
               href="/"
               className={`${s.link} hover`}
-              onMouseEnter={() => textEnter(cursorTypes.accentCursor)}
-              onMouseLeave={textLeave}
+              onMouseEnter={() => setCursorVariant(cursorTypes.accentCursor)}
+              onMouseLeave={() => setCursorVariant(cursorTypes.default)}
             >
               privacy
             </Link>
@@ -63,10 +63,8 @@ const Modal = ({ toggleModal }) => {
       </div>
     </div>
   );
-};
+}
 
 Modal.propTypes = {
   toggleModal: PropTypes.func.isRequired,
 };
-
-export default React.memo(Modal);

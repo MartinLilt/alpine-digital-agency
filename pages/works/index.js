@@ -1,32 +1,32 @@
 import Layout from "../../src/components/layout";
 import Portfolio from "../../src/components/portfolio";
 import Head from "next/head";
-import DATA from "../../cards/cases.json";
+
 import PropTypes from "prop-types";
 import React from "react";
 
-const Works = ({ cards }) => {
+export default function Works({ cards }) {
   return (
     <>
       <Head>
         <title>Works - Alpine Design</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout isFooter isWorks>
-        <Portfolio options={cards} />
-      </Layout>
+      <div data-scroll-section>
+        <Layout isFooter isWorks>
+          <Portfolio options={cards} />
+        </Layout>
+      </div>
     </>
   );
-};
+}
 
 export async function getStaticProps() {
-  const cards = DATA;
-  // const randomCard = cards.find((card) => card.id === 22);
-
+  const res = await fetch(`http://${process.env.NEXT_PUBLIC_API}/api`);
+  const cards = await res.json();
   return {
     props: {
       cards,
-      // randomCard,
     }, // will be passed to the page component as props
     revalidate: 10,
   };
@@ -55,5 +55,3 @@ Works.propTypes = {
 Works.defaultProps = {
   cards: [],
 };
-
-export default React.memo(Works);

@@ -1,43 +1,19 @@
 import s from "./hero.module.css";
 import Link from "next/link";
 import PropTypes from "prop-types";
-import { motion, useAnimation } from "framer-motion";
-import React, { useEffect, useContext, useRef } from "react";
+import { motion } from "framer-motion";
+import React, { useContext } from "react";
 import CardTemplate from "../card";
-import { useInView } from "react-intersection-observer";
 import { cursorTypes } from "../../../vars";
-import { CursorContext } from "../cursorProvider/CursorProvider";
+import { CursorContext } from "../../../context/cursorContext";
 
 const SPECIFIC_CARD_IDS = [1, 2, 3, 4];
 
-const Hero = ({ options }) => {
-  const { textEnter, textLeave } = useContext(CursorContext);
-  const { ref, inView } = useInView({
-    threshold: 0.2,
-  });
-  const animation = useAnimation();
+export default function Hero({ options }) {
+  const [cursorVariant, setCursorVariant] = useContext(CursorContext);
   const newArray = options
     .filter((obj) => SPECIFIC_CARD_IDS.includes(obj.id))
     .reverse();
-
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        y: "0",
-        opacity: 1,
-        transition: {
-          type: "spring",
-          duration: 3,
-        },
-      });
-    }
-    if (!inView) {
-      animation.start({
-        y: "100px",
-        opacity: 0,
-      });
-    }
-  }, [inView]);
 
   return (
     <section>
@@ -59,22 +35,24 @@ const Hero = ({ options }) => {
       <div className="container">
         <div>
           <div>
-            <motion.h2 ref={ref} className={s.brand_title} animate={animation}>
+            <h2
+              className={`${s.brand_title} animation-default-init`}
+              data-scroll-repeat="true"
+              data-scroll
+              data-scroll-offset="25%, 25%"
+              data-scroll-class="animation-default-start"
+            >
               Building brands & digital experiences for over twenty years
-            </motion.h2>
+            </h2>
             <p className={s.sup_title}>Featured Works_</p>
           </div>
           <div className={s.container}>
-            <ul className={s.list}>
-              {newArray?.map((item, id) => {
-                return <CardTemplate options={item} key={id} />;
-              })}
-            </ul>
+            <CardTemplate options={newArray} />
             <Link
               href="/works"
               className={`${s.link} hover`}
-              onMouseEnter={() => textEnter(cursorTypes.accentCursor)}
-              onMouseLeave={textLeave}
+              onMouseEnter={() => setCursorVariant(cursorTypes.accentCursor)}
+              onMouseLeave={() => setCursorVariant(cursorTypes.default)}
             >
               See more work
             </Link>
@@ -83,10 +61,8 @@ const Hero = ({ options }) => {
       </div>
     </section>
   );
-};
+}
 
 Hero.propTypes = {
   options: PropTypes.array.isRequired,
 };
-
-export default React.memo(Hero);
